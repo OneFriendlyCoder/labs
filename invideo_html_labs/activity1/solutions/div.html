@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Div and Span</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        .important {
+            font-weight: bold;
+            color: red;
+        }
+
+        
+        #main-title {
+            text-align: center;
+            color: navy;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" style="margin: 20px auto;">
+        <h1 id="main-title" style="text-align: left; font-size: 32px; margin: 0 0 16px 0;">Welcome to My Page</h1>
+
+        <p>
+            This is a simple example of using
+            <span class="highlight">span</span>
+            and
+            <span class="important">div</span>
+            elements in HTML.
+        </p>
+
+        <div>
+            <h2>My Interests</h2>
+            <ul>
+                <li><span class="highlight">Cooking</span></li>
+                <li><span class="highlight">Traveling</span></li>
+                <li><span class="highlight">Reading</span></li>
+            </ul>
+        </div>
+
+        <div>
+            <h2>Important Notice</h2>
+            <p>
+                This section uses a <span class="important">div</span> to highlight important information.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

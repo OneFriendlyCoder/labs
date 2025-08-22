@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Enhanced Audio and Video Example</title>
+</head>
+<body>
+    <h1>Advanced Multimedia Example: Audio and Video</h1>
+    <!-- Audio Element with Various Controls and Codecs -->
+    <h2>Listen to this Audio:</h2>
+    <audio controls autoplay loop muted preload="auto">
+        <source src="./audio.mp3" type="audio/mpeg">
+        <source src="./audio.ogg" type="audio/ogg; codecs='vorbis'">
+        Your browser does not support the audio element.
+    </audio>
+    <p>The audio starts automatically, loops continuously, and begins muted. 
+        It is available in MP3 and Ogg formats.</p>
+    <!-- Video Element with Various Controls and Codecs -->
+    <h2>Watch this Video:</h2>
+    <video controls autoplay loop muted preload="metadata" width="600" poster="thumbnail.jpg">
+        <source src="./video.mp4" type="video/mp4;">
+        <source src="./video.webm" type="video/webm">
+        Your browser does not support the video element.
+        <a href="video.mp4">Download the video instead.</a>
+    </video>
+    <p>The video starts automatically, loops continuously, and begins muted. 
+        It is available in MP4 and WebM formats.</p>
+</body>
+</html>

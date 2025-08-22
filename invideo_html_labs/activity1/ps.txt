@@ -1,0 +1,27 @@
+Note : Contains html invideo labs for Images and Meta Iframe and Special Characters
+(TL104->Invideo HTML Labs->Activity3)
+
+Problem Statement 1 - Images
+Objective : 
+In this activity, you'll learn about the elements: <id>, <class>, <div> and <span>
+
+Task : 
+An HTML file named 'index.html' present in the '/home/labDirectory/div_labs' has the basic code.
+Add the corresponding styles to the html tags so that the final output looks like the screenshot provided.
+This activity tests the understanding of usage and difference between div and span tags in HTML.
+The classes have their CSS defined in the same file and the span and div tags have to be added according to the output.png 
+
+The final HTML webpage should look something like this : output.png
+
+
+Problem Statement 2
+Objective : 
+In this activity, you'll learn about the elements: <meta>, <iframe> and how to escape special characters in HTML.
+
+Task : 
+An HTML file named 'index.html' present in the '/home/labDirectory/meta_iframe_labs' has the basic code.
+Your are required to fill the blank HTML code based on the instructions provided in the comments
+Complete the code such that the final output should look like the one in the output.png
+
+
+The final HTML webpage should look something like this : output.png

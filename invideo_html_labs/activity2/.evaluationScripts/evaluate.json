@@ -1,0 +1,28 @@
+{
+    "data": [
+        {
+            "testid": "Images/Starry Night Image",
+            "score": 0,
+            "maximum marks": 1,
+            "message": "Starry Night image is incorrect or missing alignment."
+        },
+        {
+            "testid": "Images/Mona Lisa Image",
+            "score": 0,
+            "maximum marks": 1,
+            "message": "Mona Lisa image is incorrect or missing."
+        },
+        {
+            "testid": "Images/Blue Marble Image",
+            "score": 0,
+            "maximum marks": 1,
+            "message": "Blue Marble image is incorrect or missing."
+        },
+        {
+            "testid": "Images/Mona Lisa Figcaption",
+            "score": 0,
+            "maximum marks": 1,
+            "message": "Mona Lisa figcaption is incorrect or missing."
+        }
+    ]
+}

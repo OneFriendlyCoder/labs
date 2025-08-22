@@ -1,0 +1,33 @@
+(TL104->Invideo HTML Labs->Activity4)
+
+Problem Statement 1 — Images with Alignment
+Objective : 
+Practice inserting and aligning images in an HTML page while using semantic elements and basic layout-clearing techniques. 
+Learn about image attributes (`src`, `alt`, `width`/`height`) and how to place images to the left/right of text, use a `<figure>` with `<figcaption>`, and prevent float overlap using a clearing element.
+
+Task : 
+An HTML file named 'index.html' present in the '/home/labDirectory/images_activity' has the basic code.
+A reference file called 'reference.html' is provided in the same directory.
+Your are required to fill the blank HTML code based on the instructions provided in the comments
+
+Autograding : 
+The autograder will check the tags with the proper attributes and attribute values
+Testcases 1 to 4 correspond to this PS
+
+The final HTML webpage should look something like this : output.png
+
+
+Problem Statement 2 — Multimedia Embedding
+Objective : 
+Practice inserting audio and video in an HTML page while using different multimedia attributes. 
+Learn about audio and video attributes (`src`, `controls`, `autoplay`, `loop`, `muted`, `preload`, `width`) and how to embed multimedia content effectively.
+
+Task : 
+An HTML file named 'index.html' present in the '/home/labDirectory/multimedia_activity' has the basic code.
+A reference file called 'reference.html' is provided in the same directory.
+You are required to fill the blank HTML code based on the instructions provided in the comments
+
+Autograding : 
+The autograder will check the tags with the proper attributes and attribute values
+Make sure to add all the attributes to the tags as mentioned in the comments
+Testcases 5 to 13 correspond to this PS
