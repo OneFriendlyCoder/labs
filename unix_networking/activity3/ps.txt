@@ -1,0 +1,30 @@
+Objective : 
+Practice using `chown` to change file and directory ownership for a target user (`alice`) and groups.
+Learn and apply common `chown` options (`v`, `R`) and user:group notation.
+Verify ownership changes noninteractively with `ls l` or `stat` for autograder checks.
+
+Tasks : 
+Perform the following three tasks, each using the `chown` command. After executing each command, verify the ownership change with `ls l`:
+Task 1 : Change the owner of `README.md` to `alice`
+Task 2 : Change both the owner to `alice` and the group to `projectgroup` for the file `src/module1/file1.txt`
+Task 3 : Recursively change ownership of the entire `src` directory (and its contents) so that `alice` is the owner
+
+Submission :  
+Write the relevant commands in the submisisons.txt for each of the task. Remove the placeholder <command*> and write the appropriate command inplace.
+Auto-grading : 
+Confirm that `README.md` is owned by user `alice`.
+Confirm that `src/module1/file1.txt` is owned by `alice` and its group is `projectgroup`.
+Confirm that all files and subdirectories under `src/` are owned by `alice`.
+
+Important : 
+The autograder runs `stat` or `ls l` checks noninteractively; ensure the correct ownership is set.
+Recursive operations must affect all nested files/directories partial changes will be marked incorrect.
+Exact ownership values are required mismatched user or group names will cause grading failures.
+
+
+Tips for Success :
+Preview ownership before and after with `ls -l filename` or `ls -lR src/`.
+Use `sudo` to ensure you have permission to change ownership.
+Combine options (e.g., `Rv`) to see verbose recursive changes in one command.
+
+Good luck and happy ownership managing!

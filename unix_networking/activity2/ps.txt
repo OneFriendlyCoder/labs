@@ -1,0 +1,37 @@
+Objective
+Practice using `su` to run commands as another user (`alice`) non-interactively.
+Safely handle quoting and environment variable expansion when switching users.
+Capture command outputs to files and verify them with an automated autograder.
+
+Tasks
+You have three objectives. For each, construct and run the appropriate `su` command, then capture its output into a numbered text file:
+*Note* : The files 1.txt, 2.txt and 3.txt are not provided in the submission folder, you are supposed to create those files with 'alice' as the owner.
+1. Task 1: As user `alice`, write the literal string `{T@sk1C0mpleteD}` into a file named `1.txt`.
+2. Task 2: As user `alice`, echo the environment variable `LABVAR` (assume it is already set in Alice’s environment) and write its value into `2.txt`.
+3. Task 3: As user `alice`, invoke a non-login shell `/bin/sh`, then echo the value of `$0` (the shell’s name) into `3.txt`.
+
+For each task, you must:
+Choose the correct `su` options (`-c`, `-l`, `-s`, etc.).
+Properly quote your command to preserve special characters and variable expansion.
+Redirect command output to the specified file in the current working directory i..e /home/labDirectory
+Use absolute path to redirect the command output to the specified file in the pwd (ex: `command` > /home/labDirectory/1.txt)
+
+Submission 
+Write the command for the 3 tasks in the submissions.txt present in the /home/labDirectory. Remove the placeholder <command*> and inplace write those commands
+Autograding : 
+Verify that `1.txt` exists, which should be created by the user 'alice' and contains exactly the string `{T@sk1C0mpleteD}` (with braces and capitalization).
+Verify that `2.txt` exists, which should be created by the user 'alice' and contains the current value of the `LABVAR` environment variable for user `alice`.
+Verify that `3.txt` exists, which should be created by the user 'alice' and contains the value of `$0` when invoked under `/bin/sh` for user `alice` (typically `/bin/sh`).
+
+Important:
+The autograder will run each command non-interactively, so ensure your commands do not prompt for passwords or additional input.
+Exact string matching is used—extra whitespace or missing quotes will cause a grading error.
+Use `su` command only to complete this activity and not `sudo` command.
+---
+
+Tips for Success:
+Test each `su` invocation in your terminal before the autograder runs.
+Use proper quoting to handle braces and variable expansion.
+Confirm file contents with `cat 1.txt`, etc., to ensure correctness.
+
+Good luck and enjoy mastering `su`!
