@@ -1,0 +1,191 @@
+/* Basic page layout */
+:root{
+  --dash: #6d3a36;
+  --bg-demo: #e8e4e4;
+  --tile: #2f78b0;
+  --tile-text: #fff;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 24px;
+  background: white;
+  color: #222;
+}
+
+.page-title{
+  text-align:center;
+  margin: 6px 0 18px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.examples {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.card{
+  border: 5px dashed var(--dash);
+  padding: 12px;
+  background: transparent;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.card-title{
+  font-size: 14px;
+  text-align: center;
+  margin: 6px 0 10px;
+  font-weight: 700;
+}
+
+.demo{
+  background: var(--bg-demo);
+  padding: 18px;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 44px;
+  gap: 12px;
+  width: 100%;
+  max-width: 240px;
+  align-content: start;  
+  align-items: stretch;  
+  justify-content: start;
+  justify-items: stretch;
+}
+
+.grid.narrow{
+  grid-template-columns: 48px 48px;
+  grid-auto-rows: 28px;
+  gap: 18px 28px;
+  max-width: 120px;
+  width: 100%;
+}
+
+.item{
+  background: var(--tile);
+  color: var(--tile-text);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.15) inset;
+  padding: 4px 6px;
+}
+
+
+.align-content-start{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Make the grid's content pack toward the start of the block (top).
+   - Set the property that controls how the whole grid content is distributed along the block (vertical) axis.
+   - Use the value that moves tracks to the start edge.
+   - Think about when this is visible: the grid itself must have extra space in the container
+     (so the grid's total tracks do not fill the demo area).
+   - Try to avoid changing grid-template-columns or grid-auto-rows here — only alignment.
+  */
+  content: '';
+}
+
+.align-content-space-around{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Space the grid content evenly with equal space around each group of tracks.
+   - Set the property that controls distribution along the block (vertical) axis.
+   - Use the "space-around" value so there is equal space before/after and between track groups.
+   - This creates visible gaps above the first row and below the last row when the grid has extra space.
+   - Ensure you are modifying the grid container (not the items).
+  */
+  content: '';
+}
+
+/* align-items examples: each item inside its cell aligns differently vertically */
+.align-items-start{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Align grid items so their content sits at the start (top) of each grid cell.
+   - Use the property that controls alignment of items inside their row tracks (cross / block axis).
+   - Pick the value that positions each item at the top of its cell.
+   - This affects each item individually (how it fills its grid area), not the distribution of rows.
+  */
+  content: '';
+}
+
+.align-items-end{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Align grid items so their content sits at the end (bottom) of each grid cell.
+   - Use the property that controls alignment of items inside their grid area on the block axis.
+   - Use the value that pushes item content to the bottom of each cell.
+   - Compare this result visually to the "start" variant to see the difference.
+  */
+  content: '';
+}
+
+/* justify-content examples: move whole tracks horizontally inside demo */
+.justify-content-end{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Move the grid tracks so they sit at the inline (horizontal) end (right side) of the container.
+   - Use the property that controls how the whole grid tracks are distributed along the inline axis.
+   - Use the value which places the tracks flush to the end edge.
+   - This changes where the columns live inside the demo area; it does not change items within their cells.
+  */
+  content: '';
+}
+
+.justify-content-space-evenly{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Distribute the grid columns so they have equal space between each column and the container edges.
+   - Use the property for inline-axis distribution of the grid tracks.
+   - Use the value "space-evenly" to create equal gaps on left/right and between columns.
+   - This is useful to show how justify-content affects track placement when the grid is narrower than its container.
+  */
+  content: '';
+}
+
+/* justify-items examples: how items sit inside their cells horizontally */
+.justify-items-center{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Center each grid item horizontally inside its own grid cell.
+   - Use the property that controls the inline (horizontal) alignment of items inside their grid areas.
+   - Choose the value that centers item content within each cell.
+   - This affects the position of content inside each cell, not the placement of columns themselves.
+  */
+  content: '';
+}
+
+.justify-items-end{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Align each grid item to the inline (right) end inside its grid cell.
+   - Use the property controlling inline alignment of item content.
+   - Use the value that pushes item content to the right side of each cell.
+   - Compare to "center" to see how item-level alignment differs from justify-content.
+  */
+  content: '';
+}
+
+
+
+@media (max-width: 1000px){
+  .examples{ grid-template-columns: repeat(2, 1fr) }
+}
+@media (max-width: 600px){
+  .examples{ grid-template-columns: 1fr }
+  .card{ min-height: 260px }
+}

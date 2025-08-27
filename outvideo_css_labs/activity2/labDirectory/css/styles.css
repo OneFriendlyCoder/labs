@@ -1,0 +1,171 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #1b1b1b;
+  -webkit-font-smoothing:antialiased;
+}
+.site-header {
+  background: #0a74da;
+  color: #fff;
+  padding: 1rem;
+}
+.site-header h1 { margin: 0 0 .25rem 0; font-size: 1.35rem; }
+.site-header .subtitle { margin: 0; opacity: .95; font-size: .95rem; }
+
+.page { padding: 1rem; max-width: 1200px; margin: 0 auto; }
+
+.fx-section {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 1px 0 rgba(0,0,0,.03);
+}
+.fx-section h2 { margin: 0 0 .5rem 0; font-size: 1.05rem; }
+.hint { margin-top: .6rem; font-size: .88rem; color: #444; }
+
+.flexbox {
+  display: flex;
+  gap: .5rem;
+  padding: .75rem;
+  border-radius: 6px;
+  border: 2px dashed rgba(0,0,0,.06);
+  overflow: auto;
+  background: linear-gradient(180deg, rgba(255,255,255,.6), rgba(0,0,0,0.01));
+}
+
+.box {
+  background: #0a74da;
+  color: #fff;
+  min-width: 64px;
+  min-height: 48px;
+  padding: .6rem .8rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+@media (min-width: 900px) {
+  .page { padding: 1.5rem; }
+}
+
+/* ---------- SECTION 1: ---------- */
+
+.s1 .flexbox {
+  /*
+  Note : Only make changes to this declaration block
+  TODO: Style the Section 1 flex container
+   - Set the main axis so items lay out horizontally.
+   - Allow items to flow onto additional lines when space runs out.
+   - Add a shorthand that represents the two values above.
+   - Distribute items so there is equal space around each item on the main axis.
+   - Vertically align items so they sit centered inside each row.
+   - When there are multiple rows, distribute those rows so the top and bottom rows sit on the container edges with space between rows.
+   - Set a pale background color for visual contrast.
+   - Give the container a subtle border color.
+   - Ensure the container is tall enough (approx. 260px) so multiple rows can form.
+   - Add padding of about 0.9rem inside the container.
+  */
+  content: '';
+}
+
+.s1 .box:nth-child(odd)  {
+  /*
+  Note : Only make changes to this declaration block
+  TODO: Style the odd-numbered boxes for Section 1
+   - Allow these boxes to grow when there is extra space (grow > 0).
+   - Allow them to shrink if needed (shrink > 0).
+   - Choose a reasonable base width (flex-basis) around 140px.
+   - Make sure these boxes remain visually distinct from the even boxes.
+  */
+  content: '';
+}
+
+.s1 .box:nth-child(even) {
+  /*
+  Note : Only make changes to this declaration block
+  TODO: Style the even-numbered boxes for Section 1
+   - Prevent these boxes from growing (grow = 0).
+   - Prevent them from shrinking (shrink = 0).
+   - Give them a fixed width (basis) close to 100px.
+   - This ensures odd and even boxes behave differently when the container resizes.
+  */
+  content: '';
+}
+
+/* ---------- SECTION 2: ---------- */
+.s2 .flexbox {
+  /*
+  Note : Only make changes to this declaration block
+  TODO: Style the Section 2 flex container
+   - Set the main axis so items are laid out vertically (top → bottom).
+   - Allow the items to wrap so they form multiple columns when vertical space is filled.
+   - Add a shorthand that matches the direction + wrap you chose above.
+   - Distribute items along the main axis so there is space between them (top to bottom).
+   - Align items along the cross axis so content starts at the left (flex-start).
+   - When multiple columns appear, stretch those columns to fill the cross axis.
+   - Set a light blue background for visual contrast.
+   - Choose a border color that matches the section palette.
+   - Make the container tall enough (min-height ≈ 360px) so vertical wrapping is possible.
+   - Add padding of about 0.9rem inside the container.
+  */
+  content: '';
+}
+
+.s2 .box {
+  /*
+  Note : Only make changes to this declaration block
+  TODO: Style the boxes for Section 2 (column wrap behavior)
+   - Make these boxes behave like content blocks within a column (do not force grow to fill available space).
+   - Ensure the box width will match the column width (hint: width: 100% for column layout).
+   - Give alternating boxes different heights to simulate variable content (e.g., short and tall).
+  */
+  content: '';
+}
+
+.s2 .box:nth-child(odd)  { height: 56px; }
+.s2 .box:nth-child(even) { height: 90px; }
+
+/* ---------- SECTION 3: ---------- */
+.s3 .flexbox {
+  /*
+  Note : Only make changes to this declaration block
+  TODO: Style the Section 3 flex container
+   - Set the main axis direction so the visual order is reversed (items appear right → left).
+   - Prevent wrapping so all items remain on a single line.
+   - Use the shorthand form to represent your choices above.
+   - Center the group of items along the main axis.
+   - Stretch items along the cross axis so they fill the container height.
+   - Choose a warm/yellow background for contrast.
+   - Pick an appropriate border color for the section.
+   - Give the container a modest minimum height (approx. 180px).
+   - Add padding of about 0.8rem inside the container.
+   - (Hint: on very small viewports you may later allow wrapping, but keep `nowrap` here for the exercise.)
+  */
+  content: '';
+}
+
+.s3 .box:nth-child(1) { flex: 0 0 80px; }  
+.s3 .box:nth-child(2) { flex: 1 1 120px; } 
+.s3 .box:nth-child(3) { flex: 2 1 140px; } 
+.s3 .box:nth-child(4) { flex: 1 1 120px; }
+.s3 .box:nth-child(5) { flex: 0 0 100px; }
+.s3 .box:nth-child(6) { flex: 1 1 100px; }
+
+
+@media (max-width: 700px) {
+  .flexbox { gap: .4rem; padding: .6rem; }
+  .s1 .flexbox,
+  .s2 .flexbox,
+  .s3 .flexbox {
+    display: flex; 
+  }
+  .s3 .flexbox { flex-wrap: wrap; flex-flow: row-reverse wrap; white-space: normal; }
+}

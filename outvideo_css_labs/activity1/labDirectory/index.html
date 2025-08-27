@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab — Fixed vs Liquid Layouts</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>Fixed vs Liquid Layouts</h1>
+    <p class="subtitle">Three layouts : Fixed, Liquid, Mixed (fixed sidebar + fluid content)</p>
+  </header>
+
+<!-- FIXED WIDTH DEMO -->
+<section class="demo fixed-demo" id="fixed-demo">
+  <h2>Fixed-width Layout</h2>
+  <div class="container">
+    <header class="fixed-header">
+      <h3>Fixed Container (960px)</h3>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <article>
+        <h4>Article Title</h4>
+        <p>This article lives inside a fixed 960px container. Resize the window to see how it behaves on small viewports (it may cause horizontal scroll).</p>
+        <img src="images/example-1.jpg" alt="example" class="responsive-img">
+      </article>
+      <aside>
+        <h5>Aside</h5>
+        <p>Sidebar content (within fixed container).</p>
+      </aside>
+    </main>
+
+    <footer class="fixed-footer">
+      <p>Fixed footer</p>
+    </footer>
+  </div>
+</section>
+
+<!-- LIQUID DEMO -->
+<section class="demo liquid-demo" id="liquid-demo">
+  <h2>Liquid (Fluid) Layout</h2>
+  <div class="container">
+    <header class="liquid-header">
+      <h3>Fluid Container (80%)</h3>
+    </header>
+
+    <nav>
+      <ul class="nav-list">
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main class="two-col">
+      <article>
+        <h4>Fluid Article</h4>
+        <p>This layout uses percentage widths. The container is 80% of the viewport (capped with max-width).</p>
+        <img src="images/example-2.jpg" alt="example" class="responsive-img">
+      </article>
+      <aside>
+        <h5>Aside (33.333%)</h5>
+        <p>Aside sized using percentage widths.</p>
+      </aside>
+    </main>
+
+    <footer class="liquid-footer">
+      <p>Liquid footer</p>
+    </footer>
+  </div>
+</section>
+
+
+  <!-- MIXED DEMO -->
+  <section class="demo mixed-demo" id="mixed-demo">
+    <h2>Mixed Layout : Fixed Sidebar + Fluid Content</h2>
+    <div class="container">
+      <div class="mixed-wrapper">
+        <aside class="sidebar">
+          <h4>Fixed Sidebar (240px)</h4>
+          <p>Navigation / controls / ads — fixed in pixels.</p>
+        </aside>
+
+        <main class="content">
+          <h3>Fluid Content Area</h3>
+          <p>The content area uses flex: 1 so it grows/shrinks to fill available space.</p>
+          <img src="images/example-3.jpg" alt="example" class="responsive-img">
+        </main>
+      </div>
+
+      <footer>
+        <p>Mixed footer</p>
+      </footer>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>Happy Designing</p>
+  </footer>
+</body>
+</html>

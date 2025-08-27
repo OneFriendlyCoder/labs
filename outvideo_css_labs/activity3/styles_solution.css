@@ -1,0 +1,120 @@
+/* Basic page layout */
+:root{
+  --dash: #6d3a36;
+  --bg-demo: #e8e4e4;
+  --tile: #2f78b0;
+  --tile-text: #fff;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 24px;
+  background: white;
+  color: #222;
+}
+
+.page-title{
+  text-align:center;
+  margin: 6px 0 18px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* 4 columns of examples like the image */
+.examples {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+/* card surrounding each demo */
+.card{
+  border: 5px dashed var(--dash);
+  padding: 12px;
+  background: transparent;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+.card-title{
+  font-size: 14px;
+  text-align: center;
+  margin: 6px 0 10px;
+  font-weight: 700;
+}
+
+/* grey demo area */
+.demo{
+  background: var(--bg-demo);
+  padding: 18px;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+/* default grid used for many examples */
+.grid{
+  display: grid;
+  /* 2 columns, auto rows to create 3 rows since there are 6 items */
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 44px;
+  gap: 12px;
+  width: 100%;
+  /* ensure grid doesn't fill entire demo height so align-content effects are visible */
+  max-width: 240px;
+  align-content: start;    /* default */
+  align-items: stretch;    /* default */
+  justify-content: start;  /* default */
+  justify-items: stretch;  /* default */
+}
+
+/* Narrow grid used to show justify-items effects (vertical stacks with narrow tiles) */
+.grid.narrow{
+  grid-template-columns: 48px 48px;
+  grid-auto-rows: 28px;
+  gap: 18px 28px;
+  max-width: 120px;
+  width: 100%;
+}
+
+/* tiles */
+.item{
+  background: var(--tile);
+  color: var(--tile-text);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.15) inset;
+  padding: 4px 6px;
+}
+
+/* -- Demonstration classes -- */
+/* align-content examples */
+.align-content-start{ align-content: start; }
+.align-content-space-around{ align-content: space-around; }
+
+/* align-items examples: each item inside its cell aligns differently vertically */
+.align-items-start{ align-items: start; }
+.align-items-end{ align-items: end; }
+
+/* justify-content examples: move whole tracks horizontally inside demo */
+.justify-content-end{ justify-content: end; }
+.justify-content-space-evenly{ justify-content: space-evenly; }
+
+/* justify-items examples: how items sit inside their cells horizontally */
+.justify-items-center{ justify-items: center; }
+.justify-items-end{ justify-items: end; }
+
+/* simple responsive fallback: 2 columns on narrow screens */
+@media (max-width: 1000px){
+  .examples{ grid-template-columns: repeat(2, 1fr) }
+}
+@media (max-width: 600px){
+  .examples{ grid-template-columns: 1fr }
+  .card{ min-height: 260px }
+}

@@ -1,0 +1,151 @@
+* { box-sizing: border-box; }
+html,body { margin: 0; padding: 0; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; line-height: 1.45; color: #222; }
+img { max-width: 100%; height: auto; display: block; }
+.site-header { background: #0a74da; color: white; padding: 1rem; }
+.site-header .subtitle { opacity: 0.9; margin-top: 0.25rem; }
+.site-footer { text-align: center; padding: 1rem; background: #f3f3f3; margin-top: 2rem; }
+.demo { padding: 2rem 1rem; border-bottom: 1px solid #eee; }
+.demo h2 { margin-top: 0; }
+.container { margin-left: auto; margin-right: auto; background: #fff; padding: 1rem; border: 2px dashed #ddd; }
+
+/* ===================== FIXED DEMO ===================== */
+
+.fixed-demo .container {
+  /* 
+  Note : Only Make changes to this declaration block   
+  TODO: Style the fixed container
+   - Set the width to exactly 960px (fixed-width layout)
+   - Give it a light yellow background (#fffbe6)
+   - Add a solid border 2px thick with color #e6d67a
+  */
+    max-width: none;
+}
+
+.fixed-demo .fixed-header {
+  /*
+  Note : Only Make changes to this declaration block 
+  TODO: Style the fixed header area
+   - Set a background color of #f9e79f
+   - Add padding of 1rem on all sides
+   - Add a solid border-bottom 2px thick with color #e6d67a
+  */
+  content: '';
+}
+
+.fixed-demo nav {
+  background-color: #fef9e7;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e6d67a;
+}
+
+.fixed-demo main {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.fixed-demo main article {
+  flex: 2;
+}
+
+.fixed-demo main aside {
+  flex: 1;
+  max-width: 300px;
+}
+
+
+.fixed-demo .fixed-footer {
+  /* 
+  Note : Only Make changes to this declaration block 
+  TODO: Style the fixed footer area
+   - Set a background color of #f9e79f
+   - Add padding of 0.75rem on all sides
+   - Add a solid border-top 2px thick with color #e6d67a
+   - Center the text horizontally
+   - Make the text bold
+  */
+  content: '';
+}
+
+/* ===================== LIQUID LAYOUT ===================== */
+
+.liquid-demo .container {
+  /* 
+  Note : Only Make changes to this declaration block 
+  TODO: Style the liquid container
+   - Width should be 80% of the viewport
+   - Max width should be 1200px
+   - Background color: #e8f8ff
+   - Solid border 2px thick, color #bfeaf7
+  */
+  content: '';
+}
+
+
+.liquid-demo .liquid-header {
+  /* 
+  Note : Only Make changes to this declaration block 
+  TODO: Style the liquid header
+   - Background color: #d7f3ff
+   - Padding: 1rem
+   - Solid border-bottom 2px, color #bfeaf7
+  */
+  content: '';
+}
+
+.liquid-demo nav {
+  background-color: #f1fbff;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #bfeaf7;
+}
+
+.liquid-demo main.two-col {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: flex-start;
+}
+
+.liquid-demo main.two-col article {
+  width: 66.666%;
+}
+
+.liquid-demo main.two-col aside {
+  width: 33.333%;
+}
+
+.liquid-demo .liquid-footer {
+  /* 
+  Note : Only Make changes to this declaration block 
+  TODO: Style the liquid footer
+   - Background color: #d7f3ff
+   - Padding: 0.75rem
+   - Solid border-top 2px, color #bfeaf7
+   - Text alignment: center
+   - Font weight: 600
+  */
+  content: '';
+}
+
+
+/* ===================== MIXED DEMO ===================== */
+.mixed-demo .container { background: #f6fff0; }
+.mixed-wrapper { display: flex; gap: 1rem; align-items: stretch; }
+.mixed-wrapper .sidebar { width: 240px; padding: 1rem; background: #f0f0f0; }
+.mixed-wrapper .content { flex: 1; padding: 1rem; }
+
+.responsive-img { max-width: 100%; height: auto; border: 1px solid #ddd; }
+
+.nav-list { list-style: none; padding: 0; display: flex; gap: 0.5rem; margin: 0 0 1rem 0; }
+.nav-list li a { text-decoration: none; color: #0366d6; }
+
+
+
+@media (max-width: 768px) {
+  .fixed-demo .container { width: 95%;}
+  .liquid-demo main.two-col { flex-direction: column; }
+  .liquid-demo main.two-col article, .liquid-demo main.two-col aside { width: 100%; }
+  .mixed-wrapper { flex-direction: column; }
+  .mixed-wrapper .sidebar { width: 100%; }
+}

@@ -1,0 +1,179 @@
+  * { box-sizing: border-box; }
+  html,body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    background: #f4f7fb;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* design tokens */
+  :root{
+    --brand: #0a6b8a;
+    --muted: #6b7280;
+    --surface: #ffffff;
+    --site-width: 1100px; /* FIXED container width for practice */
+    --gap: 18px;
+    --radius: 10px;
+  }
+
+  /* ---------- LIQUID HERO (full-width) ---------- */
+  /* This section stretches to the browser width (liquid). The inner container is centered using a max-width. */
+  .hero-hero {
+    width: 100%;
+    background: linear-gradient(90deg, rgba(10,107,138,0.10), rgba(10,107,138,0.02));
+    padding: 48px 0;
+  }
+  .hero-inner {
+    max-width: var(--site-width);  /* aligns with the fixed site width visually */
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .hero-left h1 { margin: 0; font-size: 1.9rem; letter-spacing: -0.5px; }
+  .hero-left p { margin: 6px 0 0; color: var(--muted); }
+  .btn-primary {
+    display: inline-block;
+    background: var(--brand); color: #fff; padding: 10px 14px; border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* ---------- FIXED: main site wrapper ---------- */
+  /* This is the fixed-width layout demonstration. Students can change --site-width to see effect */
+  .site-wrap {
+    width: var(--site-width);             /* FIXED width, centered */
+    margin: 22px auto;
+    padding: 20px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: 0 6px 18px rgba(15,23,42,0.04);
+    border: 1px solid rgba(15,23,42,0.04);
+  }
+
+  /* ---------- HEADER: flexbox ---------- */
+  .site-header {
+    display: flex;                        /* FLEXBOX: logo + nav */
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .brand { font-weight: 800; font-size: 1.1rem; }
+  .brand .accent { color: var(--brand); }
+  .main-nav { display: flex; gap: 16px; align-items: center; }
+  .main-nav a { color: var(--muted); padding: 6px; border-radius: 6px; text-decoration: none; }
+  .main-nav a:hover { background: rgba(10,107,138,0.06); color: #0f172a; }
+
+  /* ---------- FILTER BAR: flexbox, wraps ---------- */
+  /* Flexbox row that demonstrates wrapping and alignment behavior on narrow screens. */
+  .filters {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 18px 0;
+    flex-wrap: wrap;                      /* shows flex-wrap behavior */
+  }
+  .search { flex: 1 1 380px; min-width: 200px; }
+  .search input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(15,23,42,0.06);
+    background: #fbfdff;
+  }
+  .controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .controls select { padding: 10px; border-radius: 8px; border: 1px solid rgba(15,23,42,0.06); background: #fff; }
+  .filter-buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    padding: 8px 10px; border-radius: 999px; background: #f8fafc; border: 1px solid rgba(15,23,42,0.03);
+    cursor: pointer;
+  }
+
+  /* ---------- MARKET GRID: CSS Grid gallery ---------- */
+  /* The parent grid (.market-grid) uses CSS Grid to place cards. Students should experiment with minmax & auto-fit. */
+  .market-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* GRID: responsive columns using minmax */
+    gap: 18px;
+    margin: 6px 0 20px;
+    align-items: start;
+  }
+
+  /* ---------- NFT CARD (mix: card uses flexbox internally) ---------- */
+  .nft-card {
+    background: var(--surface); 
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(15,23,42,0.04);
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    box-shadow: 0 6px 12px rgba(15,23,42,0.03);
+  }
+  .nft-media { width: 100%; padding-top: 66%; position: relative; background: linear-gradient(180deg,#eef7fb,#ffffff); }
+  /* Use absolutely positioned img to cover the media area */
+  .nft-media img {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .nft-body { padding: 12px 14px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .nft-title { margin: 0; font-size: 1.05rem; color: #0f172a; }
+  .nft-creator { margin: 0; color: var(--muted); font-size: 0.9rem; }
+  .nft-meta { margin-top: auto; display:flex; align-items:center; justify-content:space-between; gap: 8px; }
+  .price { font-weight:700; color:var(--brand); }
+  .like {
+    padding: 8px 12px; border-radius: 8px; border: none; background: #0a6b8a; color: #fff; cursor: pointer;
+  }
+
+  /* ---------- LEARN MORE section (inside fixed container) ---------- */
+  .learn-more { margin-top: 18px; padding: 12px; background: linear-gradient(180deg,#fbfdff,#fff); border-radius: 8px; border: 1px solid rgba(15,23,42,0.03); }
+  .learn-more ul { margin: 8px 0 0 18px; color: var(--muted); }
+
+  /* ---------- LIQUID FOOTER: full-width strip ---------- */
+  .site-footer {
+    width: 100%;
+    background: linear-gradient(180deg,#fff,#f8fafc);
+    padding: 18px 0;
+    border-top: 1px solid rgba(15,23,42,0.03);
+  }
+  .footer-inner {
+    max-width: var(--site-width); /* centers content to align with fixed wrapper */
+    margin: 0 auto;
+    padding: 0 20px;
+    display:flex; justify-content:space-between; align-items:center;
+    gap: 12px;
+  }
+  .footer-inner nav a { color: var(--muted); text-decoration: none; }
+
+  /* ---------- RESPONSIVE BREAKPOINTS ---------- */
+  /* At medium widths we make the fixed container more forgiving: demonstrates combining fixed + liquid behaviors */
+  @media (max-width: 980px) {
+    :root { --site-width: 95vw; }   /* "fixed" becomes relative: students can toggle this to see behavior */
+    .hero-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+
+  /* At small widths collapse nav, stack filters, and make grid single column-ish */
+  @media (max-width: 720px) {
+    .main-nav { display: none; }    /* simple behavior to practice responsive nav */
+    .filters { flex-direction: column; align-items: stretch; }
+    .controls { justify-content: space-between; }
+    .market-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    .hero-left h1 { font-size: 1.4rem; }
+  }
+
+  /* Very small screens polish */
+  @media (max-width: 420px) {
+    .hero-inner { padding: 0 8px; }
+    .site-wrap { padding: 14px; }
+    .nft-meta { flex-direction: column; align-items: flex-start; gap: 6px; }
+  }
+
+  /* Small utilities */
+  .sr-only {
+    position: absolute !important;
+    height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
+  }

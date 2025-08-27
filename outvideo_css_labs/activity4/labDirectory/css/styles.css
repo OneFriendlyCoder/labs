@@ -1,0 +1,180 @@
+html { font-size: 62.5%; }
+:root{
+  --container-max: 960px;
+  --container-pad: 1.6rem;
+  --brand: #0a6b8a;
+  --muted: #666;
+  --bg: #fff;
+}
+
+*{ box-sizing: border-box; }
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  background: var(--bg);
+  color: #222;
+  line-height: 1.5;
+  font-size: 1.6rem;
+}
+
+.container{
+  width: 90%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.site-header{
+  border-bottom: 0.4rem dashed #6d3a36;
+  background: #f7fbfc;
+}
+
+.header-inner{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Use flexbox to layout the header content
+   - Make the header layout use flexbox so the title and nav can sit on one row when there is space.
+   - Allow items to wrap on very small screens.
+   - Vertically center items in the header.
+   - Space the title and the nav apart (start / end).
+   - Add comfortable vertical padding (approx. 1.0rem).
+  */
+  content: '';
+}
+
+.site-title{
+  margin: 0;
+  font-size: 2.4rem;
+  color: var(--brand);
+}
+
+.main-nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.main-nav a{
+  text-decoration: none;
+  color: var(--brand);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+.hero{
+  text-align: center;
+  padding: 2.4rem 0;
+}
+
+.hero-title{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Make the hero title scale fluidly
+   - Use a viewport-based unit (vw) so the title scales with viewport width on small/medium screens.
+   - Add a sensible max-width in characters (ch) to limit line length.
+   - Consider adding a maximum cap (in a media query) so the title doesn't grow indefinitely on very large screens.
+   - Use line-height ~1.05 for tight headings.
+  */
+  content: '';
+}
+
+.hero-sub{
+  margin: 0 0 1.2rem 0;
+  color: var(--muted);
+  font-size: 1.8rem;
+}
+
+.hero-img{
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Make hero images responsive and visually pleasing
+   - Ensure the image never overflows its container.
+   - Prefer width:100% and height:auto for full-bleed/hero images.
+   - Add a border-radius for subtle rounding.
+   - Consider using max-width instead of width if you have small intrinsic images.
+  */
+  content: '';
+}
+
+.content-grid{
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+  padding: 2.4rem 0;
+}
+
+.main-article{
+  font-size: 1.6rem;
+}
+
+.sidebar{
+  background: #fbfbfb;
+  border-left: 0.1rem solid #eee;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+}
+
+
+.responsive-img,
+.hero-img,
+.full-width-img {
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Make images scale without distortion
+   - Ensure images scale down on small screens: max-width or width adjustments.
+   - Keep height: auto to preserve aspect ratio.
+   - Use display:block to remove inline gaps.
+  */
+  content: '';
+}
+
+.maxwidth-img {
+  /*
+  Note: Only make changes to this declaration block
+  TODO: Ensure images never stretch beyond intrinsic size
+   - Use max-width:100% and height:auto so small images don't up-scale and blur.
+  */
+  content: '';
+}
+
+
+figure{
+  margin: 1.2rem 0;
+}
+figcaption{
+  font-size: 1.3rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+.note{
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+.site-footer{
+  border-top: 0.1rem solid #eee;
+  padding: 1.6rem 0;
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+
+
+@media (min-width: 700px){
+  .content-grid{
+    grid-template-columns: 2fr 1fr;
+    gap: 3.2rem;
+  }
+  .hero-title{
+    font-size: 5.2vw;
+  }
+}
+
+@media (min-width: 1400px){
+  .hero-title{
+    font-size: 72px;
+  }
+}

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NFT Marketplace — Layouts Practice</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- LIQUID: full-width top hero/banner (stretches across viewport) -->
+  <header class="hero-hero">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <h1>NFT MARKET</h1>
+        <p>Explore digital collectibles — practice layouts: fixed, liquid, flex, grid & responsive.</p>
+      </div>
+      <div class="hero-cta">
+        <a href="#market" class="btn-primary">Browse Marketplace</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FIXED: primary site wrapper (fixed max width, centered) -->
+  <div class="site-wrap">
+
+    <!-- HEADER uses FLEXBOX for logo + nav -->
+    <div class="site-header">
+      <div class="brand">NFT<span class="accent">Lab</span></div>
+
+      <!-- Flexbox navigation -->
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#">Explore</a>
+        <a href="#">Drops</a>
+        <a href="#">Collections</a>
+        <a href="#">Docs</a>
+      </nav>
+    </div>
+
+    <!-- SEARCH & FILTER BAR — Flexbox row that wraps on small screens -->
+    <section class="filters">
+      <div class="search">
+        <label for="q" class="sr-only">Search NFTs</label>
+        <input id="q" type="search" placeholder="Search by name, creator, or collection" />
+      </div>
+
+      <div class="controls">
+        <select aria-label="Sort">
+          <option>Sort: Popular</option>
+          <option>Newest</option>
+          <option>Price: Low → High</option>
+          <option>Price: High → Low</option>
+        </select>
+
+        <div class="filter-buttons">
+          <button class="chip">All</button>
+          <button class="chip">Art</button>
+          <button class="chip">Music</button>
+          <button class="chip">Gaming</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN GRID AREA: CSS GRID used for layout of marketplace (gallery) -->
+    <main id="market" class="market-grid">
+
+      <!-- each card inside uses a mixture of grid (parent) + flex (card internals) -->
+      <!-- REPEAT: demo set of NFT cards -->
+      <article class="nft-card">
+        <div class="nft-media" aria-hidden="true">
+          <img src="https://via.placeholder.com/450x350.png?text=NFT+1" alt="NFT 1 preview">
+        </div>
+        <div class="nft-body">
+          <h3 class="nft-title">Neon Horizon</h3>
+          <p class="nft-creator">by <strong>@satoshi</strong></p>
+          <div class="nft-meta">
+            <div class="price">0.8 ETH</div>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="nft-card">
+        <div class="nft-media"><img src="https://via.placeholder.com/450x350.png?text=NFT+2" alt="NFT 2 preview"></div>
+        <div class="nft-body">
+          <h3 class="nft-title">Crystal Forest</h3>
+          <p class="nft-creator">by <strong>@nymph</strong></p>
+          <div class="nft-meta">
+            <div class="price">1.25 ETH</div>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="nft-card">
+        <div class="nft-media"><img src="https://via.placeholder.com/450x350.png?text=NFT+3" alt="NFT 3 preview"></div>
+        <div class="nft-body">
+          <h3 class="nft-title">Polygon Beats</h3>
+          <p class="nft-creator">by <strong>@djhex</strong></p>
+          <div class="nft-meta">
+            <div class="price">0.12 ETH</div>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="nft-card">
+        <div class="nft-media"><img src="https://via.placeholder.com/450x350.png?text=NFT+4" alt="NFT 4 preview"></div>
+        <div class="nft-body">
+          <h3 class="nft-title">Retro Runner</h3>
+          <p class="nft-creator">by <strong>@pixelcar</strong></p>
+          <div class="nft-meta">
+            <div class="price">2.4 ETH</div>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="nft-card">
+        <div class="nft-media"><img src="https://via.placeholder.com/450x350.png?text=NFT+5" alt="NFT 5 preview"></div>
+        <div class="nft-body">
+          <h3 class="nft-title">Ocean Whispers</h3>
+          <p class="nft-creator">by <strong>@marina</strong></p>
+          <div class="nft-meta">
+            <div class="price">0.6 ETH</div>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="nft-card">
+        <div class="nft-media"><img src="https://via.placeholder.com/450x350.png?text=NFT+6" alt="NFT 6 preview"></div>
+        <div class="nft-body">
+          <h3 class="nft-title">Solar Flare</h3>
+          <p class="nft-creator">by <strong>@helios</strong></p>
+          <div class="nft-meta">
+            <div class="price">3.1 ETH</div>
+            <button class="buy">Buy</button>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- small explanatory footer inside fixed container -->
+    <section class="learn-more">
+      <h4>What to practise</h4>
+      <ul>
+        <li><strong>Fixed width</strong> of the site wrapper: identify and modify the fixed width to see effects.</li>
+        <li><strong>Liquid sections</strong>: hero and footer stretch full width — try changing their padding and inner max-width.</li>
+        <li><strong>Flexbox</strong>: modify the filter bar and nav to experiment alignment and wrapping.</li>
+        <li><strong>Grid</strong>: change columns in the gallery (.market-grid) — experiment with <code>minmax()</code> and <code>auto-fit</code>.</li>
+        <li><strong>Responsive</strong>: use DevTools to test breakpoints included in the CSS.</li>
+      </ul>
+    </section>
+
+  </div><!-- .site-wrap -->
+
+  <!-- LIQUID: full-width footer strip -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p>© 2025 NFT Lab — demo page for CSS layout practice</p>
+      <nav aria-label="footer links">
+        <a href="#">Terms</a> · <a href="#">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

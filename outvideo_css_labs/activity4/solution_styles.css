@@ -1,0 +1,167 @@
+/* base: set easy rem math */
+html { font-size: 62.5%; } /* 1rem = 10px if browser default 16px */
+:root{
+  --container-max: 960px;
+  --container-pad: 1.6rem;
+  --brand: #0a6b8a;
+  --muted: #666;
+  --bg: #fff;
+}
+
+*{ box-sizing: border-box; }
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  background: var(--bg);
+  color: #222;
+  line-height: 1.5;
+  font-size: 1.6rem; /* 16px */
+}
+
+/* container: liquid with max-width */
+.container{
+  width: 90%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-pad);
+  padding-right: var(--container-pad);
+}
+
+.site-header{
+  border-bottom: 0.4rem dashed #6d3a36;
+  background: #f7fbfc;
+}
+.header-inner{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.0rem 0;
+}
+.site-title{
+  margin: 0;
+  font-size: 2.4rem;
+  color: var(--brand);
+}
+
+.main-nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.main-nav a{
+  text-decoration: none;
+  color: var(--brand);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+/* hero */
+.hero{
+  text-align: center;
+  padding: 2.4rem 0;
+}
+
+.hero-title{
+  margin: 0 0 0.6rem 0;
+  font-size: 6vw; /* scales with viewport width */
+  line-height: 1.05;
+  max-width: 48ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-sub{
+  margin: 0 0 1.2rem 0;
+  color: var(--muted);
+  font-size: 1.8rem;
+}
+
+.hero-img{
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 1.2rem;
+  border-radius: 6px;
+}
+
+.content-grid{
+  display: grid;
+  gap: 2.4rem;
+  grid-template-columns: 1fr;
+  align-items: start;
+  padding: 2.4rem 0;
+}
+
+/* main article and sidebar */
+.main-article{
+  font-size: 1.6rem;
+}
+
+.sidebar{
+  background: #fbfbfb;
+  border-left: 0.1rem solid #eee;
+  padding: 1.2rem;
+  font-size: 1.4rem;
+}
+
+/* responsive image helpers */
+.responsive-img,
+.hero-img,
+.full-width-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.maxwidth-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* example captions */
+figure{
+  margin: 1.2rem 0;
+}
+figcaption{
+  font-size: 1.3rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+/* small note */
+.note{
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+
+/* footer */
+.site-footer{
+  border-top: 0.1rem solid #eee;
+  padding: 1.6rem 0;
+  font-size: 1.4rem;
+  color: var(--muted);
+}
+
+/* larger screens: two-column (2fr / 1fr) and adjust spacing */
+@media (min-width: 700px){
+  .content-grid{
+    grid-template-columns: 2fr 1fr;
+    gap: 3.2rem;
+  }
+  .hero-title{
+    font-size: 5.2vw;
+  }
+}
+
+/* very wide screens keep the container readable */
+@media (min-width: 1400px){
+  .hero-title{
+    font-size: 72px; /* cap the hero size */
+  }
+}
