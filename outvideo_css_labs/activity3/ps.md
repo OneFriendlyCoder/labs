@@ -1,74 +1,61 @@
-## Change the fucking PS
+Objective  
 
-## **Problem Statement: Fixed vs. Liquid Layout Styling Challenge**
+Your task is to apply **CSS Grid alignment properties** to complete the design of several webpage sections.  
 
-### **Objective**
+You will be provided with a partially completed CSS file (`styles.css`) containing **empty declaration blocks** (`content: '';`) for specific selectors. Your job is to fill in these declaration blocks only where instructed, using the correct alignment property values as described in the provided requirements.  
 
-Your task is to apply **CSS styling** to complete the design of two webpage sections:
+The goal is to help you understand:  
 
-1. **Fixed-width layout**
-2. **Liquid (fluid) layout**
+How **align-content** distributes rows vertically inside a grid.  
+How **align-items** aligns items vertically within their own cells.  
+How **justify-content** distributes columns horizontally inside a grid container.  
+How **justify-items** aligns items horizontally inside their own cells.  
+The difference between **grid-level track alignment** vs **item-level alignment**.  
 
-You will be provided with a partially completed CSS file (`styles.css`) containing empty **declaration blocks** for specific elements. Your job is to fill in these declaration blocks **only where instructed**, using the correct property values for widths, backgrounds, borders, padding, alignment, and font weight as described in the provided requirements.
 
-The goal is to help you understand:
+Task Details  
 
-* How **fixed-width layouts** behave across different screen sizes.
-* How **liquid layouts** adjust fluidly with viewport changes.
-* Correct usage of CSS selectors and declaration blocks.
-* Applying precise values for **colors, units, and measurements**.
+In the provided `styles.css` file, locate the commented **TODO sections** within each selector’s declaration block for:  
 
----
+`.align-content-start`  
+`.align-content-space-around`  
+`.align-items-start`  
+`.align-items-end`  
+`.justify-content-end`  
+`.justify-content-space-evenly`  
+`.justify-items-center`  
+`.justify-items-end`  
 
-### **Task Details**
+Each TODO contains:  
 
-In the provided `styles.css` file, locate the **commented TODO sections** within each selector’s declaration block for:
+Instructions for what alignment property to add (e.g., `align-content`, `justify-items`).  
+The exact value that needs to be applied (e.g., `start`, `end`, `space-around`, `center`).  
 
-* `.fixed-demo .container`
-* `.fixed-demo .fixed-header`
-* `.fixed-demo .fixed-footer`
-* `.liquid-demo .container`
-* `.liquid-demo .liquid-header`
-* `.liquid-demo .liquid-footer`
+You must replace the placeholder `content: '';` inside these declaration blocks with **valid CSS declarations** according to the instructions.  
 
-Each TODO contains:
 
-* **Instructions** for what properties to add (e.g., width, background color, border, padding, text alignment, font weight).
-* The **exact values** that need to be applied.
+Rules  
 
-You must replace the placeholder `content: '';` inside these declaration blocks with **valid CSS declarations** according to the instructions.
+1. Do not modify anything outside the specified declaration blocks.  
+2. Do not remove or rename selectors — they must remain exactly as provided.  
+3. Use the **exact property names and values** indicated in the TODO instructions. Spelling mistakes will cause automated tests to fail.  
+4. Do not remove the comments — they guide you and indicate which section to edit.  
+5. Maintain proper CSS syntax (`property: value;`).  
 
----
 
-### **Rules**
+Submission Format  
 
-1. **Do not modify anything outside the specified declaration blocks.**
-2. **Do not remove or change selectors** — they must remain exactly as provided.
-3. Use the **exact values** mentioned (colors, sizes, units). Spelling or unit mistakes will cause automated tests to fail.
-4. Do not remove the comments — they guide you and indicate which section to edit.
-5. Maintain proper CSS syntax (property: value;).
+You must submit:  
 
----
+A single CSS file: `css/styles.css`  
+This file should contain all required changes within the given declaration blocks.  
+No extra files, comments, or code changes outside the allowed areas.  
 
-### **Submission Format**
 
-You must submit:
+Guidance  
 
-* A single CSS file: `styles.css`
-* This file should contain all required changes within the given declaration blocks.
-* No extra files, comments, or code changes outside the allowed areas.
-
----
-
-### **Guidance**
-
-* **Fixed-width layout** means the container’s width stays constant (in pixels) regardless of screen size.
-* **Liquid (fluid) layout** means the container’s width is set in percentages and adapts to the viewport.
-* Use the correct **color codes** (e.g., `#fffbe6` not just `yellow`).
-* Border declarations can be done using shorthand (`border: 2px solid #e6d67a;`) or individual properties.
-* Padding and font-weight values must match exactly what is specified.
-* Once done, resize your browser window to see the difference between fixed and liquid layouts.
-
----
-
-Your final CSS will be evaluated automatically. If even one value is incorrect, the related test will fail. Accuracy is key!
+`align-content` → controls **distribution of the whole grid’s rows** along the block (vertical) axis.  
+`align-items` → controls **alignment of items inside their own cells** vertically.  
+`justify-content` → controls **distribution of the grid’s columns** along the inline (horizontal) axis.  
+`justify-items` → controls **alignment of items inside their own cells** horizontally.  
+Resize your browser or stretch the demo containers to see the visual differences.  

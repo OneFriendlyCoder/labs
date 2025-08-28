@@ -4,7 +4,6 @@ import json
 import os
 from collections import defaultdict
 
-# CHANGE THIS PATH to match your environment if needed
 EVALUATE_FILE = "/home/.evaluationScripts/evaluate.json"
 
 class Grader:
