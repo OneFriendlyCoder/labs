@@ -18,7 +18,7 @@ In the provided `styles.css` file, locate the commented TODO sections inside the
  `.fixed-demo .fixed-header`  
  `.fixed-demo .fixed-footer`  
  `.liquid-demo .container`  
- `.liquid-demo .liquid-header`  
+ `.liquid-demo .liquid-header`
  `.liquid-demo .liquid-footer`  
 
 Each TODO comment describes exactly what you need to implement (e.g., set width, background color, border thickness, alignment).  

@@ -15,7 +15,7 @@ The final HTML webpage should look something like this : output.png
 
 
 Problem Statement 2
-Objective : 
+Objective :
 In this activity, you'll learn about the elements: <meta>, <iframe> and how to escape special characters in HTML.
 
 Task : 
