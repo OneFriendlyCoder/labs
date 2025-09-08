@@ -1,0 +1,27 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.color-box {
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+    background-color: gray;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}

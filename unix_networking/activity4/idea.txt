@@ -7,23 +7,19 @@ Verify installed packages by capturing version output to files for automated gra
 Troubleshoot common dependency errors using `apt -f install` (or `apt-get install -f`).
 Follow lab constraints (non-interactive mode, correct file paths, and avoiding `sudo` for the provided commands).
 
-
 Tasks : 
 **Install `htop`** from the pre-downloaded `.deb` in `/home/labDirectory/` using `dpkg`, ensuring all dependencies are satisfied.
 **Install `vim`** using `apt`, refreshing package lists first if necessary.
 Verify installations by running `htop --version` and `vim --version`, and redirecting their output to `htop.txt` and `vim.txt` respectively in the current directory.
 
-
 Submission Template : 
 Write the commands in the submission.txt file present in the /home/labDirectory/
 Autograder will check if "htop" and "vim" are installed or not.
 
-**Important:**
-
+Important:
 Dependency errors: If `dpkg -i` reports missing dependencies, run `apt-get install -f` (or `apt -f install`) to fix them.
 Non interactive mode: Ensure commands run without prompts (use `-y` with `apt` if needed).
 Permissions: Do not use `sudo` for installation commands.
 File paths: Reference `/home/labDirectory/htop_*.deb` explicitly do not move the file.
-
 
 **Good luck and enjoy mastering Debian package tools!**

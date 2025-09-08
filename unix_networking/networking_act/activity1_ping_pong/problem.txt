@@ -8,8 +8,8 @@ Objective :
 To use the `ping` command to test connectivity to the localhost, understand its key options, and document both the command used and answers to specific questions about its flags.  
 
 Task : 
-1. Run the `ping` command to localhost exactly 5 times and explicitly set the interval between packets to 2 seconds.
-2. Save the command used into the file `solutions.txt`.  
+Run the `ping` command to localhost exactly 5 times and explicitly set the interval between packets to 2 seconds.
+Save the command used into the file `solutions.txt`.  
 
 Submission : 
 In `submissions.txt.txt`, replace `<command>` with the exact command you ran.  

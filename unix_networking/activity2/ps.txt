@@ -6,9 +6,9 @@ Capture command outputs to files and verify them with an automated autograder.
 Tasks
 You have three objectives. For each, construct and run the appropriate `su` command, then capture its output into a numbered text file:
 *Note* : The files 1.txt, 2.txt and 3.txt are not provided in the submission folder, you are supposed to create those files with 'alice' as the owner.
-1. Task 1: As user `alice`, write the literal string `{T@sk1C0mpleteD}` into a file named `1.txt`.
-2. Task 2: As user `alice`, echo the environment variable `LABVAR` (assume it is already set in Alice’s environment) and write its value into `2.txt`.
-3. Task 3: As user `alice`, invoke a non-login shell `/bin/sh`, then echo the value of `$0` (the shell’s name) into `3.txt`.
+Task 1: As user `alice`, write the literal string `{T@sk1C0mpleteD}` into a file named `1.txt`.
+Task 2: As user `alice`, echo the environment variable `LABVAR` (assume it is already set in Alice’s environment) and write its value into `2.txt`.
+Task 3: As user `alice`, invoke a non-login shell `/bin/sh`, then echo the value of `$0` (the shell’s name) into `3.txt`.
 
 For each task, you must:
 Choose the correct `su` options (`-c`, `-l`, `-s`, etc.).

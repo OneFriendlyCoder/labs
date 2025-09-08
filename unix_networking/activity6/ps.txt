@@ -73,8 +73,8 @@ Together, SSH and rsync form a robust platform for secure, automated file distri
 
 Objective : 
 To configure and verify password-less SSH between alice and bob, securely transfer a file with scp, and synchronize a directory with rsync. This lab teaches RSA key generation, public-key deployment, automated (password-less) remote operations, and verification of transferred/synchronized data essential tasks for secure remote administration.
-Tasks :
 
+Tasks :
 TASK 1 : Key Generation: As `alice`, generate a RSA key pair without a passphrase.
 TASK 2 : Key Deployment: Copy the public key to `bob`. The default directory where the key will be stored is /home/bob/.ssh/authorized_keys
 TASK 3 : File Transfer (SCP): Transfer `shared.txt` present in /home/alice/ to `bob@localhost:/home/bob/` without a password.
@@ -83,7 +83,6 @@ TASK 4 : Directory Synchronization (rsync): Recursively sync `big_folder/` prese
 *Note* : Wait for sometime to enable user creation in the lab.
 
 Submission :
-
 A file exists at `/home/labDirectory/submissions.txt` containing :
     For Task 1 and 2 : Perform steps manually (no entries needed).
     For Task 3 and 4 : Remove the `<command>` placeholder and replace it with the exact `scp` (task3) and `rsync` (task4) commands you used.

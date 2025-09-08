@@ -22,7 +22,7 @@ cp -r /app/* .
 
 chmod -R 777 $list_of_files
 
-node clientautograder.js
+node autograder.js
 
 rm -r $list_of_files
 

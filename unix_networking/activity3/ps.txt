@@ -21,7 +21,6 @@ The autograder runs `stat` or `ls l` checks noninteractively; ensure the correct
 Recursive operations must affect all nested files/directories partial changes will be marked incorrect.
 Exact ownership values are required mismatched user or group names will cause grading failures.
 
-
 Tips for Success :
 Preview ownership before and after with `ls -l filename` or `ls -lR src/`.
 Use `sudo` to ensure you have permission to change ownership.
