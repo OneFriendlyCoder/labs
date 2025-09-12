@@ -40,11 +40,7 @@ RUN apt-get update -y && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN python3 -m pip install --upgrade pip setuptools wheel && \
-    python3 -m pip install pymongo faker bcrypt requests tinycss2 webcolors
-
-RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
-    apt-get update && apt-get install -y nodejs && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    python3 -m pip install bcrypt requests tinycss2 webcolors
 
 RUN mkdir -p /home/labDirectory /home/.evaluationScripts && \
     echo "cd /home/labDirectory" > /root/.bashrc
