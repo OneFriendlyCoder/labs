@@ -1,5 +1,5 @@
 # unix networking activity 1-6
-FROM ubuntu:jammy
+FROM ubuntu:22.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN=true
@@ -37,7 +37,13 @@ RUN apt-get update -y && apt-get install -y \
     gzip \
     bzip2 \
     xz-utils \
+    openssh-client \ 
+    rsync \
+    dnsutils \
+    file \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN yes | unminimize
 
 RUN python3 -m pip install --upgrade pip setuptools wheel && \
     python3 -m pip install bcrypt requests tinycss2 webcolors
