@@ -1,0 +1,61 @@
+# unix networking activity 1-6
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV DEBCONF_NONINTERACTIVE_SEEN=true
+
+RUN apt-get update -y && apt-get install -y \
+    python3 \
+    python3-pip \
+    python3-venv \
+    python3-bs4 \
+    wget \
+    curl \
+    net-tools \
+    iproute2 \
+    nano \
+    jq \
+    cron \
+    zip \
+    unzip \
+    software-properties-common \
+    ca-certificates \
+    fonts-liberation \
+    libnss3 \
+    lsb-release \
+    xdg-utils \
+    libgbm1 \
+    gnupg \
+    language-pack-en-base \
+    debconf-utils \
+    iputils-ping \
+    tzdata \
+    less \
+    man-db \
+    sudo \
+    tar \
+    gzip \
+    bzip2 \
+    xz-utils \
+    openssh-client \ 
+    rsync \
+    dnsutils \
+    file \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN yes | unminimize
+
+RUN python3 -m pip install --upgrade pip setuptools wheel && \
+    python3 -m pip install bcrypt requests tinycss2 webcolors
+
+RUN mkdir -p /home/labDirectory /home/.evaluationScripts && \
+    echo "cd /home/labDirectory" > /root/.bashrc
+
+ENV INSTRUCTOR_SCRIPTS="/home/.evaluationScripts"
+ENV LAB_DIRECTORY="/home/labDirectory"
+ENV PATH="/home/.evaluationScripts:${PATH}"
+ENV TERM="xterm"
+
+WORKDIR /home/labDirectory
+
+ENTRYPOINT ["/home/.evaluationScripts/entrypoint.sh"]

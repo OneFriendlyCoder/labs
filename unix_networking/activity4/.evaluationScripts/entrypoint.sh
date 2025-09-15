@@ -44,8 +44,4 @@ cd "$DEST_DIR"
 # echo "Downloading $DEB_NAME to $DEST_DIR"
 # curl -sSL "$DEB_URL" -o "$DEST_DIR/$DEB_NAME"
 
-exec mongod \
-  --bind_ip_all \
-  --dbpath /data/db \
-  --logpath /var/log/mongodb/mongod.log \
-  --logappend
+exec tail -f /dev/null

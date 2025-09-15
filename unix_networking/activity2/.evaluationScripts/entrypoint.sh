@@ -45,9 +45,4 @@ else
   echo "unset EXPORT_ME already in $ALICE_PROFILE"
 fi
 
-# 5) Finally exec mongod as PID 1 (no duplicate runs!)
-exec mongod \
-  --bind_ip_all \
-  --dbpath /data/db \
-  --logpath /var/log/mongodb/mongod.log \
-  --logappend
+exec tail -f /dev/null

@@ -1,3 +1,0 @@
-<command>
-Which flag allows you to specify the output file name? : <Answer>
-Which flag is used to follow redirects? : <Answer>

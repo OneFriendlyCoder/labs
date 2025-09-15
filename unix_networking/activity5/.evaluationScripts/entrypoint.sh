@@ -82,9 +82,4 @@ generate_crons alice 7
 generate_crons bob 6
 generate_crons root 11
 
-
-exec mongod \
-  --bind_ip_all \
-  --dbpath /data/db \
-  --logpath /var/log/mongodb/mongod.log \
-  --logappend
+exec tail -f /dev/null

@@ -80,8 +80,4 @@ EOF
   chown -R "$user":"$user" "/home/$user"
 done
 
-exec mongod \
-  --bind_ip_all \
-  --dbpath /data/db \
-  --logpath /var/log/mongodb/mongod.log \
-  --logappend
+exec tail -f /dev/null

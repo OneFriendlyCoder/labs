@@ -48,8 +48,4 @@ chown -R root:projectgroup "$LAB_DIR"
 chmod -R 700 "$LAB_DIR/src"
 chmod 600 "$LAB_DIR/README.md"
 
-exec mongod \
-  --bind_ip_all \
-  --dbpath /data/db \
-  --logpath /var/log/mongodb/mongod.log \
-  --logappend
+exec tail -f /dev/null
