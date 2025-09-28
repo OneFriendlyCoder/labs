@@ -10,13 +10,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y && \
     apt-get install -y \
     # Basic utilities
-    man-db \
-    manpages-posix \
+    vim \
     nano \
     curl \
     # Python
     python3-pip \
-    python3-dev \
     # Node.js
     nodejs \
     npm \
@@ -86,10 +84,7 @@ ENV INSTRUCTOR_SCRIPTS="/home/.evaluationScripts"
 ENV LAB_DIRECTORY="/home/labDirectory"
 ENV PATH="/home/.evaluationScripts:${PATH}"
 
-# Copy application files
-# COPY .evaluationScripts /home/.evaluationScripts
-# COPY labDirectory /home/labDirectory
-
+# Expose port for the server
+EXPOSE 30000
 WORKDIR /home/labDirectory
-
 CMD [ "/bin/bash", "-c", "bash /home/.evaluationScripts/init_activity.sh; while :; do sleep 10; done" ]

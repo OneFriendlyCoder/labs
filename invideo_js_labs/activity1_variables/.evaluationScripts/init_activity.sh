@@ -1,5 +1,3 @@
 #!/bin/bash
 set -e
-while true; do
-    sleep 10
-done
+exec node /home/.evaluationScripts/server.js
