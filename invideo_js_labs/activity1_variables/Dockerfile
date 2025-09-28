@@ -73,7 +73,9 @@ WORKDIR /app
 
 # Install Node.js dependencies
 RUN npm init -y
-RUN npm install puppeteer cssom color
+
+# installing puppeteer globally as it was causing issue
+RUN npm install -g puppeteer cssom color    
 
 # Create directories
 RUN mkdir /home/.evaluationScripts /home/labDirectory
