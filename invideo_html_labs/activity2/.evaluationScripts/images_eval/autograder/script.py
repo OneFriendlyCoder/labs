@@ -1,8 +1,6 @@
 import json
-
 from bs4 import BeautifulSoup
 
-# Define the grading structure
 marks = {
     "Images": {
         "Starry Night Image": 0,
@@ -21,30 +19,23 @@ feedback = {
     }
 }
 
-# Load and parse the student's HTML file
 with open("/home/labDirectory/images_activity/index.html", "r", encoding="utf-8") as f:
     soup = BeautifulSoup(f, "html.parser")
 
-# Check for Starry Night image
-starry_night = soup.find("img", {"src": "starry-night.jpg"})
+starry_night = soup.find("img", {"src": ["starry-night.jpg", "./starry-night.jpg"]})
 if (
     starry_night
     and starry_night.get("alt") == "Starry Night"
     and starry_night.get("align") == "right"
 ):
     marks["Images"]["Starry Night Image"] = 1
-    feedback["Images"]["Starry Night Image"] = (
-        "Correct Starry Night image with alignment."
-    )
+    feedback["Images"]["Starry Night Image"] = "Correct Starry Night image with alignment."
 else:
-    feedback["Images"]["Starry Night Image"] = (
-        "Starry Night image is incorrect or missing alignment."
-    )
+    feedback["Images"]["Starry Night Image"] = "Starry Night image is incorrect or missing alignment."
 
-# Check for Mona Lisa image inside figure with figcaption
 mona_lisa_figure = soup.find("figure")
 mona_lisa_img = (
-    mona_lisa_figure.find("img", {"src": "mona-lisa.jpg"}) if mona_lisa_figure else None
+    mona_lisa_figure.find("img", {"src": ["mona-lisa.jpg", "./mona-lisa.jpg"]}) if mona_lisa_figure else None
 )
 mona_lisa_caption = mona_lisa_figure.find("figcaption") if mona_lisa_figure else None
 
@@ -58,21 +49,15 @@ if mona_lisa_caption and mona_lisa_caption.text == "Mona Lisa":
     marks["Images"]["Mona Lisa Figcaption"] = 1
     feedback["Images"]["Mona Lisa Figcaption"] = "Correct figcaption for Mona Lisa."
 else:
-    feedback["Images"]["Mona Lisa Figcaption"] = (
-        "Mona Lisa figcaption is incorrect or missing."
-    )
+    feedback["Images"]["Mona Lisa Figcaption"] = "Mona Lisa figcaption is incorrect or missing."
 
-# Check for Blue Marble image
-blue_marble = soup.find("img", {"src": "the-blue-marble.jpg"})
+blue_marble = soup.find("img", {"src": ["the-blue-marble.jpg", "./the-blue-marble.jpg"]})
 if blue_marble and blue_marble.get("alt") == "The Blue Marble":
     marks["Images"]["Blue Marble Image"] = 1
     feedback["Images"]["Blue Marble Image"] = "Correct Blue Marble image."
 else:
-    feedback["Images"]["Blue Marble Image"] = (
-        "Blue Marble image is incorrect or missing."
-    )
+    feedback["Images"]["Blue Marble Image"] = "Blue Marble image is incorrect or missing."
 
-# Compile the results
 overall = {"data": []}
 for category, val in marks["Images"].items():
     status = "success" if val == 1 else "fail"
@@ -86,6 +71,5 @@ for category, val in marks["Images"].items():
         }
     )
 
-# Save results to JSON file
 with open("/home/.evaluationScripts/evaluate.json", "w") as f:
     json.dump(overall, f, indent=4)
