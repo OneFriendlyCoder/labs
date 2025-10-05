@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+#filterInput {
+    width: 80%;
+    padding: 10px;
+    border: 2px solid #4a90e2;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    color: #fff;
+}
+
+#clearList {
+    background-color: #e74c3c;
+    margin-left: 10px;
+}
+
+#clearList:hover {
+    background-color: #c0392b;
+}
+
+#addItem {
+    background-color: #4a90e2;
+    margin-top: 15px;
+}
+
+#addItem:hover {
+    background-color: #357abd;
+}
+
+/* List Styles */
+ul#itemList {
+    list-style-type: none;
+    width: 80%;
+    margin-top: 10px;
+}
+
+ul#itemList li {
+    background-color: #fff;
+    color: #333;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+ul#itemList li:hover {
+    transform: scale(1.02);
+}
+
+.deleteBtn {
+    background-color: #e74c3c;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+.deleteBtn:hover {
+    background-color: #c0392b;
+}
