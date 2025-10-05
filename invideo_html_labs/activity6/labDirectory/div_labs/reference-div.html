@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Example of div with ID and Class</title>
+    <style>
+        /* Styling for the div with the id 'main-container' */
+        #main-container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            border: 2px solid #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Styling for elements with the class 'box' */
+        .box {
+            background-color: #e0e0e0;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+        }
+
+        /* Additional styling for the div with the id 'special-box' */
+        #special-box {
+            background-color: #d0f0d0;
+            border: 2px dashed #4caf50;
+        }
+
+        .highlight {
+            background-color: yellow;
+            font-weight: bold;
+        }
+
+        /* Styling for the span element with the id 'important' */
+        #important {
+            color: red;
+            font-size: 1.2em;
+    </style>
+</head>
+
+<body>
+
+    <!-- Div with an id for unique styling -->
+    <div id="main-container">
+        <h1>Welcome to My Page</h1>
+
+        <!-- Div with a class for common styling -->
+        <div class="box">
+            <h2>Box 1</h2>
+            <p>This is the first box with common styling.</p>
+        </div>
+
+        <!-- Div with both id and class for specific and common styling -->
+        <div id="special-box" class="box">
+            <h2>Box 2</h2>
+            <p>This is a special box with unique styling as well as common styling.</p>
+        </div>
+
+        <!-- Another div with a class for common styling -->
+        <div class="box">
+            <h2>Box 3</h2>
+            <p>This is the third box with common styling.</p>
+            <p>Also a normal paragraph with <span class="highlight">highlighted text</span>
+                and <span id="important">important text</span> for emphasis.
+            </p>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

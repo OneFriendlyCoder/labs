@@ -23,6 +23,7 @@ async function runTests() {
     // Test 1: Check if form submission stores data in localStorage
     const test1 = {
       testid: "LocalStorageSetImplementation",
+      status: "fail",
       score: 0,
       "maximum marks": 1,
       message: "Failed to implement localStorage.setItem",
@@ -42,6 +43,7 @@ async function runTests() {
     );
 
     if (storedFirstname === "John" && storedLastname === "Doe") {
+      test1.status = "pass";
       test1.score = 1;
       test1.message = "localStorage.setItem implemented successfully";
     }
@@ -50,6 +52,7 @@ async function runTests() {
     // Test 2: Check if page loads stored data from localStorage
     const test2 = {
       testid: "LocalStorageGetImplementation",
+      status: "fail",
       score: 0,
       "maximum marks": 1,
       message: "Failed to implement localStorage.getItem",
@@ -57,6 +60,7 @@ async function runTests() {
 
     const greetingText = await page.$eval("#greeting", (el) => el.textContent);
     if (greetingText === "Hello John Doe") {
+      test2.status = "pass";
       test2.score = 1;
       test2.message = "localStorage.getItem implemented successfully";
     }
@@ -65,6 +69,7 @@ async function runTests() {
     console.error("Error during testing:", error);
     results.data.push({
       testid: "TestError",
+      status: "fail",
       score: 0,
       "maximum marks": 0,
       message: `Error during testing: ${error.message}`,

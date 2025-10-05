@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Example of ID and Class Attributes with CSS</title>
+    <style>
+        /* Styling for the element with the id 'main-header' */
+        #main-header {
+            color: darkblue;
+            text-align: center;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        /* Styling for elements with the class 'intro' */
+        .intro {
+            color: darkgreen;
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
+
+        /* Styling for the element with the id 'special-paragraph' and class 'highlight' */
+        #special-paragraph {
+            background-color: lightyellow;
+            padding: 10px;
+            border-left: 5px solid orange;
+        }
+</style>
+</head>
+<body>
+
+    <!-- Using an ID to uniquely identify the main header -->
+    <h1 id="main-header">Welcome to My Website</h1>
+
+    <!-- Using a class to group similar elements -->
+    <p class="intro">This is an introduction paragraph.</p>
+    <p class="intro">This is another introduction paragraph.</p>
+
+    <!-- Using both ID and Class on the same element -->
+    <p id="special-paragraph" class="highlight intro">This is a special highlighted paragraph.</p>
+
+</body>
+</html>

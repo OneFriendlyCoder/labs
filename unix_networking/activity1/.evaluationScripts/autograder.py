@@ -14,8 +14,8 @@ correct_cmds = [
     ["ss -t -n"],
     ["ss -u"],
     ["ss -u -n"],
-    ["ss -t -l"],
-    ["ss -u -l"],
+    ["ss -t -l", "ss -t state listen"],
+    ["ss -u -l", "ss -u state listen"],
 ]
 
 def run_command(cmd):

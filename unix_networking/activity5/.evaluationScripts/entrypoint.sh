@@ -1,18 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Ensure running as root
 if (( EUID != 0 )); then
   echo "This script must be run as root." >&2
   exit 1
 fi
 
-# Install cron if missing
 if ! command -v crontab &>/dev/null; then
   apt-get update && apt-get install -y cron
 fi
 
-# Start cron service (init.d or fallback)
 if command -v service &>/dev/null; then
   service cron start || service crond start || true
 elif [ -x "/etc/init.d/cron" ]; then
@@ -22,7 +19,6 @@ else
   sleep 1
 fi
 
-# Create users alice and bob, set login to home
 for u in alice bob; do
   if ! id "$u" &>/dev/null; then
     useradd -m -s /bin/bash "$u"
@@ -31,7 +27,6 @@ for u in alice bob; do
   grep -qx 'cd "$HOME"' "$bashrc" 2>/dev/null || echo 'cd "$HOME"' >> "$bashrc"
 done
 
-# Add cronjobs helper
 generate_crons() {
   local user=$1 count=$2 home crontab_tmp
   home=$([[ $user == root ]] && echo "/root" || echo "/home/$user")
@@ -43,7 +38,6 @@ generate_crons() {
     hour=$(( RANDOM % 24 ))
     log="$home/cronjob_${user}_${i}.log"
 
-    # Determine schedule
     if [[ $user == root && $(( i % 2 )) -eq 0 ]]; then
       spec="$minute $hour * 1,3,5,7,9,11 2,4"
     elif [[ $user == alice && $(( i % 2 )) -eq 1 ]]; then
@@ -54,18 +48,52 @@ generate_crons() {
       spec="$minute $hour * * *"
     fi
 
-    # Ensure log exists
     touch "$log"
     chown "$user:$user" "$log" 2>/dev/null || true
 
-    # Use bash -lc to ensure date substitution and environment
     echo "$spec bash -lc 'echo \"[\$(date)] ${user}_cronjob_${i} executed\" >> $log'" >> "$crontab_tmp"
   done
 
-  # Add a fixed routine backup job for root at 11:30 IST (06:00 UTC)
   if [[ $user == root ]]; then
     echo "0 6 * * * bash -lc 'echo \"[\$(date)] routine_backup_job executed\" >> /root/cronjob_routine_backup.log'" >> "$crontab_tmp"
     touch /root/cronjob_routine_backup.log
+    chown root:root /root/cronjob_routine_backup.log 2>/dev/null || true
+  fi
+
+  if [[ $user == alice ]]; then
+    echo "7 6 * 7 6 bash -lc 'echo \"[\$(date)] alice_job1 executed\" >> $home/alice_job1.log'" >> "$crontab_tmp"
+    touch "$home/alice_job1.log"
+    chown "$user:$user" "$home/alice_job1.log" 2>/dev/null || true
+
+    echo "6 7 * 6 6 bash -lc 'echo \"[\$(date)] alice_job2 executed\" >> $home/alice_job2.log'" >> "$crontab_tmp"
+    touch "$home/alice_job2.log"
+    chown "$user:$user" "$home/alice_job2.log" 2>/dev/null || true
+
+    echo "6 7 6 7 * bash -lc 'echo \"[\$(date)] alice_job3 executed\" >> $home/alice_job3.log'" >> "$crontab_tmp"
+    touch "$home/alice_job3.log"
+    chown "$user:$user" "$home/alice_job3.log" 2>/dev/null || true
+
+    echo "6 * * 7 7 bash -lc 'echo \"[\$(date)] alice_job4 executed\" >> $home/alice_job4.log'" >> "$crontab_tmp"
+    touch "$home/alice_job4.log"
+    chown "$user:$user" "$home/alice_job4.log" 2>/dev/null || true
+  fi
+
+  if [[ $user == bob ]]; then
+      echo "12 2 1 2 * bash -lc 'echo \"[\$(date)] bob_digest executed\" >> $home/bob_digest.log'" >> "$crontab_tmp"
+      touch "$home/bob_digest.log"
+      chown "$user:$user" "$home/bob_digest.log" 2>/dev/null || true
+
+      echo "3 3 15 1 * bash -lc 'echo \"[\$(date)] bob_security_scan executed\" >> $home/bob_security_scan.log'" >> "$crontab_tmp"
+      touch "$home/bob_security_scan.log"
+      chown "$user:$user" "$home/bob_security_scan.log" 2>/dev/null || true
+
+      echo "25 6 5 2 * bash -lc 'echo \"[\$(date)] bob_job1 executed\" >> $home/bob_job1.log'" >> "$crontab_tmp"
+      touch "$home/bob_job1.log"
+      chown "$user:$user" "$home/bob_job1.log" 2>/dev/null || true
+
+      echo "40 7 10 2 * bash -lc 'echo \"[\$(date)] bob_job2 executed\" >> $home/bob_job2.log'" >> "$crontab_tmp"
+      touch "$home/bob_job2.log"
+      chown "$user:$user" "$home/bob_job2.log" 2>/dev/null || true
   fi
 
   if [[ $user == root ]]; then
@@ -77,7 +105,6 @@ generate_crons() {
   rm -f "$crontab_tmp"
 }
 
-# Generate jobs
 generate_crons alice 7
 generate_crons bob 6
 generate_crons root 11

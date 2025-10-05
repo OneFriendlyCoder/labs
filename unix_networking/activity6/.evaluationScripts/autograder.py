@@ -79,12 +79,12 @@ def testcase_1():
     priv = os.path.join(alice_home, '.ssh', KEY_NAME)
     pub = priv + '.pub'
     if not (check_file_exists(priv) and check_file_exists(pub)):
-        return False
+        return None
     try:
         priv_owner = pwd.getpwuid(os.stat(priv).st_uid).pw_name
         pub_owner = pwd.getpwuid(os.stat(pub).st_uid).pw_name
     except Exception:
-        return False
+        return None
     return priv_owner == 'alice' and pub_owner == 'alice'
 
 
@@ -102,9 +102,9 @@ def testcase_2():
     # load keys
     private_key, public_key = load_keys(priv, pub)
     if not private_key or not public_key:
-        return False
+        return None
     if not compare_keys(private_key, public_key):
-        return False
+        return None
 
     # authorized_keys check and ownership
     try:
@@ -116,10 +116,10 @@ def testcase_2():
         )
         auth_owner = pwd.getpwuid(os.stat(auth_path).st_uid).pw_name
     except Exception:
-        return False
+        return None
 
     if not found or auth_owner != 'bob':
-        return False
+        return None
 
     # login test
     try:
@@ -129,7 +129,7 @@ def testcase_2():
         ], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=5)
         return b'SSH_SUCCESS' in result.stdout
     except Exception:
-        return False
+        return None
 
 
 def testcase_3():
@@ -139,22 +139,22 @@ def testcase_3():
     """
     cmd = get_submitted_command('testcase 3')
     if not cmd:
-        return False
+        return None
     # execute command as alice
     try:
         result = subprocess.run(['su', '-', 'alice', '-c', cmd], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=10)
         if result.returncode != 0:
             return False
     except Exception:
-        return False
+        return None
 
     bob_file = os.path.join(USERS['bob'], 'shared.txt')
     if not check_file_exists(bob_file):
-        return False
+        return None
     try:
         owner = pwd.getpwuid(os.stat(bob_file).st_uid).pw_name
     except Exception:
-        return False
+        return None
     return owner == 'bob'
 
 
@@ -165,17 +165,17 @@ def testcase_4():
     """
     cmd = get_submitted_command('testcase 4')
     if not cmd:
-        return False
+        return None
     try:
         result = subprocess.run(['su', '-', 'alice', '-c', cmd], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, timeout=20)
         if result.returncode != 0:
-            return False
+            return None
     except Exception:
-        return False
+        return None
 
     bob_dir = os.path.join(USERS['bob'], 'big_folder')
     if not os.path.isdir(bob_dir):
-        return False
+        return None
     # ownership check
     for root, dirs, files in os.walk(bob_dir):
         for name in dirs + files:
@@ -183,9 +183,9 @@ def testcase_4():
             try:
                 owner = pwd.getpwuid(os.stat(path).st_uid).pw_name
                 if owner != 'bob':
-                    return False
+                    return None
             except Exception:
-                return False
+                return None
     return True
 
 # Main execution: run tests, collect results
@@ -193,17 +193,28 @@ if __name__ == '__main__':
     tests = [testcase_1, testcase_2, testcase_3, testcase_4]
     dataSkel = []
     for i, test in enumerate(tests, start=1):
-        passed = test()
+        result = test()
+        if result is True:
+            status = "success"
+            score = 1
+            message = f"testcase {i} passed"
+        elif result is False:
+            status = "fail"
+            score = 0
+            message = f"testcase {i} failed"
+        else:  # None → not attempted
+            status = "not attempted"
+            score = 0
+            message = f"testcase {i} not attempted"
         dataSkel.append({
-            'testid': i,
-            'status': 'success' if passed else 'fail',
-            'score': 1 if passed else 0,
-            'maximum marks': 1,
-            'message': f"testcase {i} {'passed' if passed else 'failed'}"
+            "testid": i,
+            "status": status,
+            "score": score,
+            "maximum marks": 1,
+            "message": message
         })
-
     os.makedirs(os.path.dirname(EVALUATE_FILE), exist_ok=True)
     with open(EVALUATE_FILE, 'w') as out:
         json.dump({'data': dataSkel}, out, indent=4)
 
-    sys.exit(0 if all(d['status'] == 'success' for d in dataSkel) else 1)
+    sys.exit(0)

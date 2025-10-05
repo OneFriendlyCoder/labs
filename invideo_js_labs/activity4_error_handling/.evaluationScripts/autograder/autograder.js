@@ -2,7 +2,6 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
 
-// Helper function to wait
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 async function runTests() {
@@ -23,7 +22,6 @@ async function runTests() {
   try {
     const page = await browser.newPage();
 
-    // Single dialog handler for all alerts
     let lastDialogMessage = "";
     page.on("dialog", async (dialog) => {
       lastDialogMessage = dialog.message();
@@ -35,6 +33,7 @@ async function runTests() {
     // Test 1: Empty name validation
     const emptyNameTest = {
       testid: "EmptyNameValidation",
+      status: "fail",
       score: 0,
       "maximum marks": 1,
       message: "Empty name validation failed",
@@ -48,6 +47,7 @@ async function runTests() {
     );
 
     if (errorMessage1.includes("Name cannot be empty")) {
+      emptyNameTest.status = "pass";
       emptyNameTest.score = 1;
       emptyNameTest.message = "Empty name validation implemented successfully";
     }
@@ -56,6 +56,7 @@ async function runTests() {
     // Test 2: Age below 18 validation
     const ageValidationTest = {
       testid: "AgeValidation",
+      status: "fail",
       score: 0,
       "maximum marks": 1,
       message: "Age validation failed",
@@ -72,6 +73,7 @@ async function runTests() {
     );
 
     if (errorMessage2.includes("Age must be a number and at least 18")) {
+      ageValidationTest.status = "pass";
       ageValidationTest.score = 1;
       ageValidationTest.message = "Age validation implemented successfully";
     }
@@ -80,6 +82,7 @@ async function runTests() {
     // Test 3: Invalid age (non-numeric) validation
     const invalidAgeTest = {
       testid: "InvalidAgeValidation",
+      status: "fail",
       score: 0,
       "maximum marks": 1,
       message: "Invalid age validation failed",
@@ -96,6 +99,7 @@ async function runTests() {
     );
 
     if (errorMessage4.includes("Age must be a number")) {
+      invalidAgeTest.status = "pass";
       invalidAgeTest.score = 1;
       invalidAgeTest.message =
         "Invalid age validation implemented successfully";
@@ -105,6 +109,7 @@ async function runTests() {
     console.error("Test execution error:", error);
     testResults.data.push({
       testid: "TestExecutionError",
+      status: "fail",
       score: 0,
       "maximum marks": 0,
       message: `Test execution failed: ${error.message}`,
