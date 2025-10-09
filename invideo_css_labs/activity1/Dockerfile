@@ -11,18 +11,17 @@ RUN apt-get update && \
         vim \
         python3 \
         python3-bs4 \
-        python3-pip \
+        python3-cssutils \
         iproute2 \
         net-tools \
         less && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Install Python packages for CSS evaluation
-RUN pip3 install --no-cache-dir tinycss2 webcolors
-
 # Setup Directory Structure
 RUN mkdir -p /home/labDirectory /home/.evaluationScripts
+# COPY labDirectory /home/labDirectory
+# COPY .evaluationScripts /home/.evaluationScripts
 
 # Set the working directory
 WORKDIR /home/labDirectory
@@ -32,5 +31,4 @@ RUN echo "cd /home/labDirectory" >> /root/.bashrc && \
     echo "alias ls='ls --color=always'" >> /root/.bashrc && \
     echo "rm -f \$(find /home -type f -name \"._*\")" >> /root/.bashrc
 
-CMD ["bash", "-c", "while :; do sleep 10; done"]
-# CMD [ "/bin/bash", "-c", "bash /home/.evaluationScripts/init.sh; while :; do sleep 10; done" ]
+CMD [ "/bin/bash", "-c", "bash /home/.evaluationScripts/init.sh; while :; do sleep 10; done" ]

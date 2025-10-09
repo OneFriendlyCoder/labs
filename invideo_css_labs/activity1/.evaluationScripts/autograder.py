@@ -90,15 +90,15 @@ class Grader:
         return True, f"{prop} = {v}"
 
     def check_value_contains(self, props, prop, candidates):
-        """Checks if a property's value contains any of the candidate strings."""
+        """Strictly checks if the property's value exactly matches one of the candidates."""
         ok, msg = self.prop_present_and_nonempty(props, prop)
         if not ok:
             return False, msg
-        val = props.get(prop, '')
+        val = props.get(prop, '').strip()
         for c in candidates:
-            if c in val:
+            if val == c:
                 return True, f"{prop} = {val}"
-        return False, f"{prop} = {val} (does not contain any of {candidates})"
+        return False, f"{prop} = {val} (does not exactly match any of {candidates})"
 
     def any_occurrence_has_in_css(self, selector, prop, candidates):
         """
@@ -132,23 +132,128 @@ class Grader:
     def run_tests(self):
         """Defines and runs all tests."""
         tests = [
-            (1, ".hero-inner - max-width", [".hero-inner"], lambda: self.check_value_contains(self.merged_blocks.get(".hero-inner", {}), 'max-width', ['var(--site-width)', '1200px'])),
-            (2, ".hero-inner - margin", [".hero-inner"], lambda: self.check_value_contains(self.merged_blocks.get(".hero-inner", {}), 'margin', ['0 auto', '0px auto', 'auto'])),
-            (3, ".hero-inner - padding", [".hero-inner"], lambda: self.check_value_contains(self.merged_blocks.get(".hero-inner", {}), 'padding', ['0 20px', '0px 20px'])),
-            (4, ".hero-inner - display", [".hero-inner"], lambda: self.check_value_contains(self.merged_blocks.get(".hero-inner", {}), 'display', ['flex'])),
-            (5, ".hero-inner - align-items", [".hero-inner"], lambda: self.check_hero_align()),
-            (6, ".hero-inner - justify-content", [".hero-inner"], lambda: self.check_value_contains(self.merged_blocks.get(".hero-inner", {}), 'justify-content', ['space-between'])),
-            (7, ".hero-inner - gap", [".hero-inner"], lambda: self.check_value_contains(self.merged_blocks.get(".hero-inner", {}), 'gap', ['12px'])),
-            (8, ".site-header - display:flex", [".site-header"], lambda: self.check_value_contains(self.merged_blocks.get(".site-header", {}), 'display', ['flex'])),
-            (9, ".site-header - align-items", [".site-header"], lambda: self.check_value_contains(self.merged_blocks.get(".site-header", {}), 'align-items', ['center'])),
-            (10, ".site-header - justify-content", [".site-header"], lambda: self.check_value_contains(self.merged_blocks.get(".site-header", {}), 'justify-content', ['space-between'])),
-            (11, ".site-header - gap", [".site-header"], lambda: self.check_value_contains(self.merged_blocks.get(".site-header", {}), 'gap', ['12px'])),
-            (12, ".filters - display:flex", [".filters"], lambda: self.check_value_contains(self.merged_blocks.get(".filters", {}), 'display', ['flex'])),
-            (13, ".filters - gap", [".filters"], lambda: self.check_value_contains(self.merged_blocks.get(".filters", {}), 'gap', ['12px'])),
-            (14, ".filters - align-items", [".filters"], lambda: self.check_filters_align()),
-            (15, ".filters - margin", [".filters"], lambda: self.check_value_contains(self.merged_blocks.get(".filters", {}), 'margin', ['18px 0', '18px 0px'])),
-            (16, ".filters - flex-wrap", [".filters"], lambda: self.check_value_contains(self.merged_blocks.get(".filters", {}), 'flex-wrap', ['wrap'])),
+            (1, ''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114,32,45,32,109,97,120,45,119,105,100,116,104]]),
+                [''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]]), {}),
+                    ''.join([chr(c) for c in [109,97,120,45,119,105,100,116,104]]),
+                    [''.join([chr(c) for c in [118,97,114,40,45,45,115,105,116,101,45,119,105,100,116,104,41]]), '1200px']
+                )
+            ),
+            (2, ''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114,32,45,32,109,97,114,103,105,110]]),
+                [''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]]), {}),
+                    ''.join([chr(c) for c in [109,97,114,103,105,110]]),
+                    ['0 auto', '0px auto', 'auto']
+                )
+            ),
+            (3, ''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114,32,45,32,112,97,100,100,105,110,103]]),
+                [''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]]), {}),
+                    ''.join([chr(c) for c in [112,97,100,100,105,110,103]]),
+                    ['0 20px', '0px 20px']
+                )
+            ),
+            (4, ''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114,32,45,32,100,105,115,112,108,97,121]]),
+                [''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]]), {}),
+                    ''.join([chr(c) for c in [100,105,115,112,108,97,121]]),
+                    ['flex']
+                )
+            ),
+            (5, ''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114,32,45,32,97,108,105,103,110,45,105,116,101,109,115]]),
+                [''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]])],
+                lambda: self.check_hero_align()
+            ),
+            (6, ''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114,32,45,32,106,117,115,116,105,102,121,45,99,111,110,116,101,110,116]]),
+                [''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]]), {}),
+                    'justify-content',
+                    ['space-between']
+                )
+            ),
+            (7, ''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114,32,45,32,103,97,112]]),
+                [''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,104,101,114,111,45,105,110,110,101,114]]), {}),
+                    'gap',
+                    ['12px']
+                )
+            ),
+            (8, ''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114,32,45,32,100,105,115,112,108,97,121,58,102,108,101,120]]),
+                [''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]]), {}),
+                    'display',
+                    ['flex']
+                )
+            ),
+            (9, ''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114,32,45,32,97,108,105,103,110,45,105,116,101,109,115]]),
+                [''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]]), {}),
+                    'align-items',
+                    ['center']
+                )
+            ),
+            (10, ''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114,32,45,32,106,117,115,116,105,102,121,45,99,111,110,116,101,110,116]]),
+                [''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]]), {}),
+                    'justify-content',
+                    ['space-between']
+                )
+            ),
+            (11, ''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114,32,45,32,103,97,112]]),
+                [''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,115,105,116,101,45,104,101,97,100,101,114]]), {}),
+                    'gap',
+                    ['12px']
+                )
+            ),
+            (12, ''.join([chr(c) for c in [46,102,105,108,116,101,114,115,32,45,32,100,105,115,112,108,97,121,58,102,108,101,120]]),
+                [''.join([chr(c) for c in [46,102,105,108,116,101,114,115]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,102,105,108,116,101,114,115]]), {}),
+                    'display',
+                    ['flex']
+                )
+            ),
+            (13, ''.join([chr(c) for c in [46,102,105,108,116,101,114,115,32,45,32,103,97,112]]),
+                [''.join([chr(c) for c in [46,102,105,108,116,101,114,115]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,102,105,108,116,101,114,115]]), {}),
+                    'gap',
+                    ['12px']
+                )
+            ),
+            (14, ''.join([chr(c) for c in [46,102,105,108,116,101,114,115,32,45,32,97,108,105,103,110,45,105,116,101,109,115]]),
+                [''.join([chr(c) for c in [46,102,105,108,116,101,114,115]])],
+                lambda: self.check_filters_align()
+            ),
+            (15, ''.join([chr(c) for c in [46,102,105,108,116,101,114,115,32,45,32,109,97,114,103,105,110]]),
+                [''.join([chr(c) for c in [46,102,105,108,116,101,114,115]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,102,105,108,116,101,114,115]]), {}),
+                    'margin',
+                    ['18px 0', '18px 0px']
+                )
+            ),
+            (16, ''.join([chr(c) for c in [46,102,105,108,116,101,114,115,32,45,32,102,108,101,120,45,119,114,97,112]]),
+                [''.join([chr(c) for c in [46,102,105,108,116,101,114,115]])],
+                lambda: self.check_value_contains(
+                    self.merged_blocks.get(''.join([chr(c) for c in [46,102,105,108,116,101,114,115]]), {}),
+                    'flex-wrap',
+                    ['wrap']
+                )
+            ),
         ]
+
 
         for tid, desc, sels, check_fn in tests:
             if not any(s in self.merged_blocks or s in self.occurrences or re.search(r'\b' + re.escape(s) + r'\b', self.css_text) for s in sels):
@@ -175,26 +280,31 @@ class Grader:
         
         return self.write_eval()
 
-    # def check_hero_align(self):
-    #     """Check for .hero-inner align-items, allowing responsive overrides."""
-    #     ok1, msg1 = self.check_value_contains(self.merged_blocks.get(".hero-inner", {}), 'align-items', ['center'])
-    #     if ok1:
-    #         return True, msg1
-    #     return self.any_occurrence_has_in_css(".hero-inner", 'align-items', ['center', 'flex-start'])
     
     def check_hero_align(self):
-        return self.check_value_contains(
-            self.merged_blocks.get(".hero-inner", {}),
-            'align-items',
-            ['center']
-        )
+        # Only pass if align-items is exactly 'center' in the merged properties
+        props = self.merged_blocks.get(".hero-inner", {})
+        ok, msg = self.prop_present_and_nonempty(props, 'align-items')
+        if ok and props.get('align-items') == 'center':
+            return True, f"align-items = {props.get('align-items')}"
+        # Check all occurrences in CSS text strictly for 'center'
+        vals = self.find_property_values(".hero-inner", 'align-items', self.css_text)
+        for i, v in enumerate(vals):
+            if v.strip() == 'center':
+                return True, f"occurrence #{i+1} align-items = {v}"
+        return False, f"align-items is not 'center' anywhere; found: {vals}"
 
     def check_filters_align(self):
-        return self.check_value_contains(
-            self.merged_blocks.get(".filters", {}),
-            'align-items',
-            ['center']
-        )
+        props = self.merged_blocks.get(".filters", {})
+        ok, msg = self.check_value_contains(props, 'align-items', ['center'])
+        if ok:
+            return True, msg
+        vals = self.find_property_values(".filters", 'align-items', self.css_text)
+        for v in vals:
+            if 'center' == v:
+                return True, f"align-items = {v} (from occurrence)"
+        return False, "align-items is not 'center' anywhere"
+
 
     def check_mobile_adjustments(self):
         """Checks for mobile-specific styles for a small-screen resolution."""
