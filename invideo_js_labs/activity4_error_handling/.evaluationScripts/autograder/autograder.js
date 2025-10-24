@@ -47,7 +47,7 @@ async function runTests() {
     );
 
     if (errorMessage1.includes("Name cannot be empty")) {
-      emptyNameTest.status = "pass";
+      emptyNameTest.status = "success";
       emptyNameTest.score = 1;
       emptyNameTest.message = "Empty name validation implemented successfully";
     }
@@ -72,8 +72,8 @@ async function runTests() {
       (el) => el.textContent,
     );
 
-    if (errorMessage2.includes("Age must be a number and at least 18")) {
-      ageValidationTest.status = "pass";
+    if (errorMessage2.includes("Age must be at least 18")) {
+      ageValidationTest.status = "success";
       ageValidationTest.score = 1;
       ageValidationTest.message = "Age validation implemented successfully";
     }
