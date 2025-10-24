@@ -79,32 +79,6 @@ async function runTests() {
     }
     testResults.data.push(ageValidationTest);
 
-    // Test 3: Invalid age (non-numeric) validation
-    const invalidAgeTest = {
-      testid: "InvalidAgeValidation",
-      status: "fail",
-      score: 0,
-      "maximum marks": 1,
-      message: "Invalid age validation failed",
-    };
-
-    await page.$eval("#name", (el) => (el.value = ""));
-    await page.$eval("#age", (el) => (el.value = ""));
-    await page.type("#name", "John Doe");
-    await page.$eval("#age", (el) => (el.value = "abc"));
-    await page.click('button[type="submit"]');
-    const errorMessage4 = await page.$eval(
-      "#errorMessage",
-      (el) => el.textContent,
-    );
-
-    if (errorMessage4.includes("Age must be a number")) {
-      invalidAgeTest.status = "pass";
-      invalidAgeTest.score = 1;
-      invalidAgeTest.message =
-        "Invalid age validation implemented successfully";
-    }
-    testResults.data.push(invalidAgeTest);
   } catch (error) {
     console.error("Test execution error:", error);
     testResults.data.push({

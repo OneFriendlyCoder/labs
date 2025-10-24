@@ -10,12 +10,12 @@ document
 
     try {
       // Name shoudn't be empty
-      if (isNaN(name)) {
+      if (name=="") {
         // Throw error
       }
 
       // Validate age, should be >= 18
-      if (isNaN(age)) {
+      if (Number(age)<18) {
         // Throw error
       }
 
