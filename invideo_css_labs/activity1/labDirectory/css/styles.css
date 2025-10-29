@@ -33,9 +33,9 @@
      - Use Flexbox layout
      - Align items vertically in the center
      - Justify content with space-between
-     - Add gap between items (12px)
     */
     content: '';
+    gap: 12px;
   }
 
 
