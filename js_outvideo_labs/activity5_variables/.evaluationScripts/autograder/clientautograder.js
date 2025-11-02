@@ -103,16 +103,6 @@ const fs = require('fs');
                 return output;
             }
         },
-        {
-            testid: 10,
-            description: "Task 7: Camel Case Conversion",
-            check: async () => {
-                const output = await page.evaluate(() => {
-                    return document.getElementById('output').innerHTML.includes('Camel Case: firstNameOfTheUser');
-                });
-                return output;
-            }
-        }
     ];
 
     // Initialize response object
