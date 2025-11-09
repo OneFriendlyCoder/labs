@@ -43,7 +43,7 @@ async function runTests() {
     );
 
     if (storedFirstname === "John" && storedLastname === "Doe") {
-      test1.status = "pass";
+      test1.status = "success";
       test1.score = 1;
       test1.message = "localStorage.setItem implemented successfully";
     }
@@ -60,7 +60,7 @@ async function runTests() {
 
     const greetingText = await page.$eval("#greeting", (el) => el.textContent);
     if (greetingText === "Hello John Doe") {
-      test2.status = "pass";
+      test2.status = "success";
       test2.score = 1;
       test2.message = "localStorage.getItem implemented successfully";
     }
