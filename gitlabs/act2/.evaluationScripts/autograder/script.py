@@ -16,7 +16,7 @@ overall = {"data":[
 ]
 }
 
-my_tar = tarfile.open('./big_repo.tar.gz')
+my_tar = tarfile.open('/home/labDirectory/big_repo.tar.gz')
 my_tar.extractall("./")
 my_tar.close()
 os.system('clear')

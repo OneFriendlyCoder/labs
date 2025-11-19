@@ -25,6 +25,7 @@ After initializing the git repo inside a git repository, you may run into some e
 To avoid this run the following command:-
 
 git config --global --add safe.directory /home/labDirectory/working_directory
+git config --global --add safe.directory /home/.evaluationScripts/autograder/working_directory
 
 This is because we have created a git repo inside another git repo, which is a security issue for git.
 There is a very interesting reason why git has this feature, for those who are interested feel free to

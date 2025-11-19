@@ -18,7 +18,7 @@ overall = {
 
 # Extract student repo
 try:
-    with tarfile.open("./big_repo.tar.gz") as tar:
+    with tarfile.open("/home/labDirectory/merge_repo.tar.gz") as tar:
         tar.extractall("./")
 except Exception as e:
     overall["data"][0]["status"] = "failure"
@@ -26,10 +26,10 @@ except Exception as e:
     print(json.dumps(overall, indent=4))
     exit(1)
 
-repo_path = "./big_repo"
+repo_path = "./merge_repo"
 if not os.path.exists(repo_path):
     overall["data"][0]["status"] = "failure"
-    overall["data"][0]["message"] = "big_repo directory not found after extraction"
+    overall["data"][0]["message"] = "merge_repo directory not found after extraction"
     print(json.dumps(overall, indent=4))
     exit(1)
 
@@ -45,7 +45,8 @@ score = 0
 msg = []
 
 # ---- TEST 1: Commit History (Structure) ----
-commits = list(repo.iter_commits("main"))
+# CHANGE 1: Use "master" instead of "main"
+commits = list(repo.iter_commits("master"))
 commit_msgs = [c.message.strip() for c in commits]
 
 expected_msgs = [
@@ -128,12 +129,13 @@ else:
     overall["data"][0]["status"] = "failure"
 
 # ---- TEST 4: Back on main and parser.py is modified ----
-repo.git.checkout("main")
+# CHANGE 2: Use "master" instead of "main"
+repo.git.checkout("master")
 if file_ends_with(repo.head.commit, "parser.py", "# parser updated"):
     score += 2
-    msg.append("main branch contains modified parser.py.")
+    msg.append("master branch contains modified parser.py.")
 else:
-    msg.append("parser.py not in modified form on main branch.")
+    msg.append("parser.py not in modified form on master branch.")
 
 # ---- FINALIZE ----
 overall["data"][0]["score"] = score
@@ -146,4 +148,4 @@ with open("../evaluate.json", "w") as f:
     json.dump(overall, f, indent=4)
 
 # Cleanup
-os.system("rm -rf ./big_repo ./big_repo.tar.gz")
+os.system("rm -rf ./merge_repo ./merge_repo.tar.gz")
