@@ -39,6 +39,12 @@ function addTask() {
 
 // Renders the Tasks
 //-------Do not edit zone-------
+function resetTasks() {
+  localStorage.removeItem(STORAGE_KEY);
+  tasks = [];
+  renderTasks();
+}
+
 function renderTasks() {
   taskList.innerHTML = '';
   tasks.forEach(task => {
@@ -78,7 +84,7 @@ function toggleDone(id) {
   // TODO: Re-render the task list
 }
 
-// functions that saves the task in localStorage
+
 //-------Do not edit zone-------
 function saveTasks() {
   try {
@@ -87,40 +93,31 @@ function saveTasks() {
     console.error('Could not save tasks to localStorage', e);
   }
 }
-//-------Do not edit zone-------
 
-
-/* -------------------------
-   Part C - Loading Tasks
-   ------------------------- */
 function loadTasks() {
   try{
-
-  // TODO: Read saved JSON from localStorage
-
-  // TODO: Parse it and validate it is an array
-  
-  // TODO: Assign parsed tasks to the global tasks array
-
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+      if (Array.isArray(parsed)) {
+        tasks = parsed.map(t => ({
+          id: Number(t.id),
+          text: String(t.text),
+          done: Boolean(t.done)
+        }));
+      }
   }catch(e){
     console.error('Could not load tasks from localStorage',e)
   }
 }
 
-/* -------------------------
-   Wiring events & initial load (STUDENTS FILL)
-   ------------------------- */
 window.addEventListener('load', () => {
-
-  // TODO: Call loadTasks()
-
-  // TODO: Call renderTasks()
-
-  
-//-------Do not edit zone-------
+  loadTasks();
+  renderTasks();  
   addBtn.addEventListener('click', addTask);
   taskInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') addTask();
   });
+  document.getElementById('resetBtn').addEventListener('click', resetTasks);
 //-------Do not edit zone-------
 });

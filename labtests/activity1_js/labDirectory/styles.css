@@ -81,6 +81,27 @@ body {
   transform: scale(1.03);
 }
 
+/* Reset Button */
+.reset-btn {
+  padding: 12px 18px;
+  border: none;
+  background: #ff4d6d;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.25s;
+}
+
+.reset-btn:hover {
+  background: #e93b5b;
+  transform: scale(1.03);
+}
+
+.reset-btn:active {
+  transform: scale(0.97);
+}
+
 /* Task List */
 .task-list {
   display: flex;
@@ -120,4 +141,3 @@ body {
   font-size: 0.85rem;
   color: #555;
 }
-

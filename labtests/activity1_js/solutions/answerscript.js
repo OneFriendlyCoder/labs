@@ -121,7 +121,7 @@ function loadTasks() {
 }
 
 /* -------------------------
-   Wiring events & initial load (STUDENTS FILL)
+   Wiring events & initial load
    ------------------------- */
 window.addEventListener('load', () => {
 

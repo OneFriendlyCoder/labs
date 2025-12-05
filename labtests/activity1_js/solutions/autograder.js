@@ -1,3 +1,4 @@
+// autograder.js
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 const path = require("path");
@@ -92,6 +93,7 @@ async function run() {
     await wait(80);
   }
 
+  // ------------------- Part A: addTask -------------------
   try {
     await resetStatePreserveFuncs();
     const token = randToken();
@@ -119,6 +121,7 @@ async function run() {
     push("PartA-addTask", "failure", 0, "Exception: " + String(e), 4);
   }
 
+  // ------------------- Part B: toggleDone -------------------
   try {
     await resetStatePreserveFuncs();
     const token = randToken();
@@ -162,6 +165,44 @@ async function run() {
     push("PartB-toggleDone", "failure", 0, "Exception: " + String(e), 3);
   }
 
+  // ------------------- Part C: loadTasks -------------------
+  try {
+    const sample = [
+      { id: 1010101, text: "Saved A AG", done: false },
+      { id: 2020202, text: "Saved B AG", done: true }
+    ];
+    await page.evaluate((s) => {
+      localStorage.setItem(window.STORAGE_KEY || "mini_todo_tasks_v1", JSON.stringify(s));
+      const tl = document.getElementById("taskList"); if (tl) tl.innerHTML = "";
+      const inp = document.getElementById("taskInput"); if (inp) inp.value = "";
+    }, sample);
+
+    await page.reload({ waitUntil: "load" });
+    await wait(300);
+
+    const rendered = await renderedTasks();
+    const stored = await localStorageTasks();
+
+    const hasA = stored.some(s => s.text.toLowerCase().includes("saved a ag"));
+    const hasBDone = stored.some(s => s.text.toLowerCase().includes("saved b ag") && s.done === true);
+    const domCount = rendered.length;
+    const domBDone = rendered.some(r => r.text.toLowerCase().includes("saved b ag") && r.hasDoneClass);
+
+    if (hasA && hasBDone && domCount >= 2 && domBDone) {
+      push("PartC-loadTasks", "success", 3, "Tasks loaded from localStorage correctly; DOM rendered with expected items and done flags", 3);
+    } else {
+      const reasons = [];
+      if (!hasA) reasons.push("Saved A missing from storage after reload");
+      if (!hasBDone) reasons.push("Saved B done flag not set in storage after reload");
+      if (domCount < 2) reasons.push("Not enough DOM items after reload");
+      if (!domBDone) reasons.push("Rendered Saved B missing .done class");
+      push("PartC-loadTasks", "failure", 0, reasons.join("; "), 3);
+    }
+  } catch (e) {
+    push("PartC-loadTasks", "failure", 0, "Exception: " + String(e), 3);
+  }
+
+  // ------------------- Write evaluate.json -------------------
   try {
     const outPath = path.join(__dirname, "..", "evaluate.json");
     fs.writeFileSync(outPath, JSON.stringify(results, null, 2));
